@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps, router }) {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Header />
+        {router.route !== "/" && <Header />}
         <AnimatePresence exitBeforeEnter initial={false}>
           <Component {...pageProps} key={router.route} />
         </AnimatePresence>
