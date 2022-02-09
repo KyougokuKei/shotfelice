@@ -18,24 +18,24 @@ export function Header() {
       background="#1f2937"
       zIndex={3}
     >
-      <Link href="/">
+      <Link href="/" passHref>
         <Clickable p={20} borderRadius={20} mr="auto" color="white" fontSize={24}>
           TestSite
         </Clickable>
       </Link>
 
 
-      <Link href="/posts/page1">
+      <Link href="/posts/page1" passHref>
         <Clickable p={20} borderRadius={20} color="white" fontSize={18}>
           Page1
         </Clickable>
       </Link>
-      <Link href="/posts/page2">
+      <Link href="/posts/page2" passHref>
         <Clickable p={20} borderRadius={20} color="white" fontSize={18}>
           Page2
         </Clickable>
       </Link>
-      <Link href="/posts/page3">
+      <Link href="/posts/page3" passHref>
         <Clickable p={20} borderRadius={20} color="white" fontSize={18}>
           Page3
         </Clickable>
