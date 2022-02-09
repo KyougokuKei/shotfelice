@@ -9,7 +9,6 @@ body {
 html, body, #__next {
   height: 100%;
   scrollbar-width: none;
-  background-color: #1f2937;
 }
 
 body {
