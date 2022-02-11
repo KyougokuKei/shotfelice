@@ -32,9 +32,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-
-/public/fonts/subset.txt
-/public/fonts/TsukushiAMaruGothic-Bold.woff
-/public/fonts/TsukushiAMaruGothic-Bold.woff2
-/public/fonts/TsukushiAMaruGothic.woff
-/public/fonts/TsukushiAMaruGothic.woff2

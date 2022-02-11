@@ -34,7 +34,7 @@ export default function Home({ data }) {
       {/* Background Image */}
       <Box width="100vw" height="100vh" position="fixed" overflow="hidden" zIndex="-1">
         <Image
-          src="/img/background_image.jpg"
+          src="/img/background_image-min.jpg"
           alt="background_image"
           layout="fill"
           objectFit="cover"

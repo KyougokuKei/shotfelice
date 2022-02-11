@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { typography, flexbox, space, layout, border, position } from 'styled-system'
 
 export const Text = styled.div`
-  font-family: 'TsukushiAMaruGhothic';
+  font-family: 'TsukushiAMaruGhothic', sans-serif;;
   ${typography};
   ${flexbox};
   ${space};

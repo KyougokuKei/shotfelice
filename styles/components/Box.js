@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { flexbox, space, layout, border, position, background, typography, shadow, color } from 'styled-system'
 
 export const Box = styled.div`
-  font-family: 'TsukushiAMaruGhothic';
+  font-family: 'TsukushiAMaruGhothic', sans-serif;
   ${flexbox};
   ${space};
   ${layout};
