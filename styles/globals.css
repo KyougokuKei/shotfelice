@@ -28,10 +28,12 @@ a {
   font-family: "TsukushiAMaruGhothic";
   font-weight: normal;
   src: url('/fonts/TsukushiAMaruGothic.woff2') format('woff2'), url('/fonts/TsukushiAMaruGothic.woff') format('woff');
+  font-display: swap;
 }
 
 @font-face {
   font-family: "TsukushiAMaruGhothic";
   font-weight: bold;
   src: url('/fonts/TsukushiAMaruGothic-Bold.woff2') format('woff2'), url('/fonts/TsukushiAMaruGothic-Bold.woff') format('woff');
+  font-display: swap;
 }
