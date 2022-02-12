@@ -37,7 +37,7 @@ export default function Home({ data }) {
       {/* Background Image */}
       <Box width="100vw" height="100vh" position="absolute" overflow="hidden" zIndex="-1">
         <Image
-          src="/img/background_image-min.jpg"
+          src="/img/general/background_image-min.jpg"
           alt="background_image"
           layout="fill"
           objectFit="cover"
@@ -146,7 +146,7 @@ function TopBar({ top_bar }) {
         color="black"
         fontSize={16}
       >
-        <Image width={26} height={26} src="/img/logo.png" alt="logo"></Image>
+        <Image width={26} height={26} src="/img/general/logo.png" alt="logo"></Image>
         <Box
           as="span"
           color="black"
