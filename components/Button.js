@@ -18,7 +18,6 @@ export function Button(props) {
             >
                 <Text
                     px={props.px === undefined ? 40 : props.px}
-                    height="auto"
                     fontSize={props.fontSize === undefined ? 18 : props.fontSize}
                     color="white"
                     display="flex" alignItems="center" justifyContent="center"
