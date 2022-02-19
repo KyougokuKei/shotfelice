@@ -6,23 +6,28 @@ import React, { useState } from 'react';
 import { PageTransition } from '../components/PageTransition';
 import { Box, MotionDiv, Clickable, Text } from '../styles/components';
 
-import { getPostData } from '../lib/posts';
+import { getPostData, getImgPaths } from '../lib/posts';
 import HamburgerMenu from '../components/HamburgerMenu';
 import { Button } from '../components/Button';
 
 import OutsideClickHandler from 'react-outside-click-handler';
 
+import { RightArrow, LeftArrow } from '../components/SlickSlider/Arrow';
+import { SlickSlider } from '../components/SlickSlider/Slider';
+
 
 export const getStaticProps = async () => {
   const postData = await getPostData("home");
+  const imgPaths = await getImgPaths();
   return {
     props: {
       data: postData,
+      imgPaths: imgPaths,
     }
   }
 }
 
-export default function Home({ data }) {
+export default function Home({ data, imgPaths }) {
   // ホームディレクトリのみpadding-top : 0;
   if (typeof document !== 'undefined') {
     document.getElementsByTagName("body")[0].style.paddingTop = 0;
@@ -51,8 +56,36 @@ export default function Home({ data }) {
       <TopBar top_bar={data.top_bar} />
       <NavBar nav={data.nav} />
       <Subheading subheading={data.subheading} nav={data.nav} />
-      <Box height={"100%"} background="red"></Box>
 
+
+      <Box height={"100%"} background="white" >
+        <Box
+          pt={60}
+          pb={[24, 48]}
+          pl={[0, 80]}
+          display={["flex", "block", "block"]}
+          justifyContent={["center", "none"]}
+          alignItems={["center", "none"]}
+          flexDirection="column"
+        >
+          <Text
+            pl={[0, 6]}
+            pb={10}
+            fontSize={16}
+            color="grey8"
+          >
+            {data.garally.title_en}
+          </Text>
+          <Text
+            fontWeight="bold"
+            fontSize={[30, 40, 40]}
+            color="black"
+          >
+            {data.garally.title_jp}
+          </Text>
+        </Box>
+        <SlickSlider imgPaths={imgPaths}></SlickSlider>
+      </Box>
     </PageTransition>
   )
 }

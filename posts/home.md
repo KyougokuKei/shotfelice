@@ -12,4 +12,7 @@ subheading:
     title: その思い出を<br>永遠の１枚に。
     subtitle: Photo for everyone
     body: ShotFeliceはプロのカメラマンにお手軽に写真撮影を依頼できるサービスです。簡単・ネット予約で撮影を申し込み後、カメラマンが出張して、お客様の撮影を行います。撮影は柔軟な対応ができますので、お気軽にご相談ください。
+garally:
+    title_jp: ギャラリー
+    title_en: Garally
 ---
