@@ -18,7 +18,7 @@ export function Nav({ list, active, setActive }) {
                             position="relative"
                             style={{ cursor: 'pointer' }}
                             fontWeight="bold"
-                            color={active === category ? theme.colors.black : theme.colors.grey8}
+                            color={active === category ? theme.colors.black : theme.colors.grey5}
                         >
 
                             {category}

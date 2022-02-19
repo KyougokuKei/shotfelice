@@ -9,10 +9,10 @@
     "create-subset": "npm-run-all -s font:subset font:woff-normal font:woff-bold font:woff2-normal font:woff2-bold",
     "cs": "npm-run-all -s font:woff-normal font:woff-bold font:woff2-normal font:woff2-bold",
     "font:subset": "node ./lib/subset-japanese.js",
-    "font:woff-normal": "pyftsubset ./public/fonts/TsukushiAMaruGothic-Regular.otf --flavor=woff --layout-features='*' --text-file=./public/fonts/subset.txt --output-file=./public/fonts/TsukushiAMaruGothic.woff",
-    "font:woff-bold": "pyftsubset ./public/fonts/TsukushiAMaruGothic-Bold.otf --flavor=woff --layout-features='*' --text-file=./public/fonts/subset.txt --output-file=./public/fonts/TsukushiAMaruGothic-Bold.woff",
-    "font:woff2-normal": "pyftsubset ./public/fonts/TsukushiAMaruGothic-Regular.otf --flavor=woff2 --layout-features='*' --text-file=./public/fonts/subset.txt --output-file=./public/fonts/TsukushiAMaruGothic.woff2",
-    "font:woff2-bold": "pyftsubset ./public/fonts/TsukushiAMaruGothic-Bold.otf --flavor=woff2 --layout-features='*' --text-file=./public/fonts/subset.txt --output-file=./public/fonts/TsukushiAMaruGothic-Bold.woff2",
+    "font:woff-normal": "pyftsubset ./public/fonts/TsukushiAMaruGothic-Regular.otf --flavor=woff --layout-features='' --text-file=./public/fonts/subset.txt --output-file=./public/fonts/TsukushiAMaruGothic.woff",
+    "font:woff-bold": "pyftsubset ./public/fonts/TsukushiAMaruGothic-Bold.otf --flavor=woff --layout-features='' --text-file=./public/fonts/subset.txt --output-file=./public/fonts/TsukushiAMaruGothic-Bold.woff",
+    "font:woff2-normal": "pyftsubset ./public/fonts/TsukushiAMaruGothic-Regular.otf --flavor=woff2 --layout-features='' --text-file=./public/fonts/subset.txt --output-file=./public/fonts/TsukushiAMaruGothic.woff2",
+    "font:woff2-bold": "pyftsubset ./public/fonts/TsukushiAMaruGothic-Bold.otf --flavor=woff2 --layout-features='' --text-file=./public/fonts/subset.txt --output-file=./public/fonts/TsukushiAMaruGothic-Bold.woff2",
     "bundle-analyzer": "ANALYZE=true next build"
   },
   "dependencies": {

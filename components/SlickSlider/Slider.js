@@ -22,6 +22,7 @@ export function SlickSlider({ imgPaths }) {
             src={path}
             layout="responsive"
             width={960} height={1200}
+            style={{ ofjectFit: 'cover' }}
             alt={path}
             key={index}
           />
