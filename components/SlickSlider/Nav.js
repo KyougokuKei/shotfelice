@@ -7,17 +7,18 @@ import { theme } from '../../lib/theme';
 export function Nav({ list, active, setActive }) {
 
     return (
-        <Box pb={24} display="flex" alignItems="center" justifyContent="flex-start" px={[0, 80]}>
+        <Box pb={24} display="flex" alignItems="center" justifyContent={["center", "flex-start"]} px={[0, 80]}>
             <LayoutGroup>
                 {list.map((category, index) => {
                     return (
                         <Box
                             key={index}
                             onClick={() => setActive(category)}
-                            mr={20}
+                            mr={[index === list.length - 1 ? 0 : 10, index === list.length - 1 ? 0 : 20]}
                             position="relative"
                             style={{ cursor: 'pointer' }}
                             fontWeight="bold"
+                            fontSize={[14, 16]}
                             color={active === category ? theme.colors.black : theme.colors.grey5}
                         >
 
