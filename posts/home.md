@@ -15,4 +15,14 @@ subheading:
 garally:
     title_jp: ギャラリー
     title_en: Garally
+deliver:
+    title_en: Deliver photos quickly
+    title_jp: 素早く写真をお届け
+    step_title: ["簡単ネット予約", "撮影する", "写真のお届け"]
+    step_content: [
+        "『お問い合わせ』ページからご案内の手順に沿って、簡単に撮影をお申し込み頂けます",
+        "指定した場所・日時に、カメラマンが出張し、撮影を行います。",
+        "撮影した写真は、数日後にデータとプリントした写真の両方をお届けします。",
+        ]
+
 ---
