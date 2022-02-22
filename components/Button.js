@@ -1,8 +1,8 @@
 
 import { Clickable, Text } from "../styles/components";
 import Link from 'next/link';
-export function Button(props) {
 
+export function Button(props) {
     return (
         <Link href={props.href} passHref>
             <Clickable
@@ -19,7 +19,7 @@ export function Button(props) {
                 <Text
                     px={props.px === undefined ? 40 : props.px}
                     fontSize={props.fontSize === undefined ? 18 : props.fontSize}
-                    color="white"
+                    color={props.color === undefined ? "white" : props.color}
                     display="flex" alignItems="center" justifyContent="center"
                     height={50}
                 >

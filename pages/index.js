@@ -12,9 +12,10 @@ import { Button } from '../components/Button';
 
 import OutsideClickHandler from 'react-outside-click-handler';
 
-import { RightArrow, LeftArrow } from '../components/SlickSlider/Arrow';
 import { SlickSlider } from '../components/SlickSlider/Slider';
-import { Logo, Instagram, Phone, Send } from "../public/img/svg";
+import { Logo, Instagram, Phone, Send, Man, Car, Edit } from "../public/img/svg";
+
+import { convertGoldText } from "../lib/convert";
 
 
 export const getStaticProps = async () => {
@@ -59,8 +60,70 @@ export default function Home({ data, imgPaths }) {
       <Subheading subheading={data.subheading} nav={data.nav} />
       <Garally garally={data.garally} imgPaths={imgPaths} />
       <Deliver deliver={data.deliver} />
+      <Service service={data.service} />
 
     </PageTransition>
+  )
+}
+
+function Service({ service }) {
+  return (
+    Object.keys(service).map((key, index) => {
+      const isOdd = index % 2 === 0;
+      const isFinal = index === Object.keys(service).length - 1;
+
+      return (
+        <Box
+          key={index}
+          width="100vw"
+          height={["auto", 480, 580]}
+          background={isOdd ? "#F8F9FA" : "#FFFFFF"}
+          display="flex" alignItems="center" justifyContent="space-between"
+          flexDirection={["column", isOdd ? "row-reverse" : "row"]}
+          pb={[40, 0]}
+        >
+          <Box width={["100%", "50%", "50%"]} height="100%" display="flex" alignItems="flex-end" justifyContent="center">
+            <Box position="relative" width="100%" height="auto" mb={[40, 0]} maxWidth={["none", 480, 580]}>
+              <Image
+                src={"/img/service/" + key + ".png"}
+                layout="responsive" width={500} height={500}
+                alt={key}
+                objectFit={"cover"}
+              />
+            </Box>
+          </Box>
+
+          <Box
+            display="flex"
+            flexDirection="column"
+            fontWeight="bold"
+            width={["100%", "50%", "50%"]}
+            px={"5%"}
+          >
+            <Box
+              fontSize={[32, 32, 46]}
+              lineHeight={1.4}
+              mb={[20, 32]}
+              textAlign={isOdd ? "left" : "right"}
+            >
+              {convertGoldText(service[key].title)}
+            </Box>
+            <Box
+              color='grey5'
+              lineHeight={1.8}
+              textAlign={isOdd ? "left" : "right"}
+            >
+              {service[key].sub_title}
+            </Box>
+            {isFinal && (
+              <Box display="flex" alignItems="center" justifyContent="flex-end">
+                <Button mt={[32]} href="/reservation" width={["100%", "100%", 400]} fontWeight="normal" py={30} >撮影を予約</Button>
+              </Box>
+            )}
+          </Box>
+        </Box>
+      )
+    })
   )
 }
 
@@ -82,7 +145,7 @@ function Deliver({ deliver }) {
           {deliver.title_en}
         </Text>
         <Text
-          fontSize={[30, 40, 40]}
+          fontSize={[30, 42, 42]}
           fontWeight="bold"
           color="black"
           mb={20}
@@ -94,14 +157,14 @@ function Deliver({ deliver }) {
 
       {/* Deliver Body */}
       <Box
-        px={[10, 80]}
+        px={[10, 0]}
         pb={[0, 48, 48]}
         pt={[0, 30, 30]}
-        pl={["10%", 30, 80]}
+        pl={["10%", 0]}
         mb={[50, 0, 0]}
         display="flex"
         flexDirection={["column", "row"]}
-        maxWidth={980}
+        maxWidth={1140}
       >
         {[...Array(deliver.step_title.length).keys()].map((index) => {
           const title = deliver.step_title[index];
@@ -168,7 +231,7 @@ function Deliver({ deliver }) {
                 color="grey5"
                 display={["none", "block"]}
               >
-                step{index}
+                step{index + 1}
               </Text>
               <Text
                 pt={16}

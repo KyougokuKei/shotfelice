@@ -4,9 +4,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { settings } from "./settings";
 import { Nav } from "./Nav";
-import { Box, Text, MotionDiv } from "../../styles/components";
+import { Box } from "../../styles/components";
 import Image from 'next/image';
-import { LayoutGroup, AnimatePresence } from "framer-motion";
 import { useState } from 'react';
 
 export function SlickSlider({ imgPaths }) {
@@ -22,7 +21,7 @@ export function SlickSlider({ imgPaths }) {
             src={path}
             layout="responsive"
             width={960} height={1200}
-            style={{ ofjectFit: 'cover' }}
+            objectFit="cover"
             alt={path}
             key={index}
           />
