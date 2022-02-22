@@ -4,7 +4,7 @@ import '../styles/lib/reset.css'
 import { AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../lib/theme";
-import { Header } from '../components/Header'
+import { Header } from '../components/header/Header'
 
 function MyApp({ Component, pageProps, router }) {
   return (

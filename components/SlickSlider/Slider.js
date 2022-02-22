@@ -10,7 +10,7 @@ import { useState } from 'react';
 
 export function SlickSlider({ imgPaths }) {
   const categories = Object.keys(imgPaths);
-  const [active, setActive] = useState(categories[0]);
+  const [active, setActive] = useState(categories[2]);
 
   return (
     <Box>

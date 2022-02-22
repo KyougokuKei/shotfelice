@@ -1,4 +1,4 @@
-import { Box, MotionDiv } from "../styles/components";
+import { Box, MotionDiv } from "../../styles/components";
 
 const margin = 4;
 
