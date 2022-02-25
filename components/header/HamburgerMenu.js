@@ -3,7 +3,7 @@ import { Box, MotionDiv } from "../../styles/components";
 const margin = 4;
 
 export default function HamburgerMenu(props) {
-  const isOpen = props.isOpen
+  const isOpen = props.isOpen;
   return (
     <Box style={{ cursor: "pointer" }} width={24} height={14} {...props}>
       <MotionDiv

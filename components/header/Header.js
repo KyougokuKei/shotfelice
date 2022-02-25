@@ -1,35 +1,39 @@
 import { useState } from "react";
 import { Box, MotionDiv, Clickable, Text } from "../../styles/components";
-import HamburgerMenu from './HamburgerMenu';
-import OutsideClickHandler from 'react-outside-click-handler';
-import Link from 'next/link';
-import { data } from './setting';
+import HamburgerMenu from "./HamburgerMenu";
+import OutsideClickHandler from "react-outside-click-handler";
+import Link from "next/link";
+import { data } from "./data";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const variants = {
     false: {
       opacity: 0,
-      height: 0
+      height: 0,
     },
     true: {
       opacity: 1,
-      height: 300
-    }
-  }
+      height: 300,
+    },
+  };
   return (
     <Box position="relative" height={[40, 90]}>
-      <OutsideClickHandler onOutsideClick={() => {
-        if (isOpen) {
-          setIsOpen(false);
-        }
-      }}>
+      <OutsideClickHandler
+        onOutsideClick={() => {
+          if (isOpen) {
+            setIsOpen(false);
+          }
+        }}
+      >
         <HamburgerMenu
           position="absolute"
           right="5%"
           top={30}
           isOpen={isOpen}
-          onClick={() => { setIsOpen(!isOpen); }}
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
           display={["block", "none"]}
           zIndex={2}
         />
@@ -40,7 +44,8 @@ export function Header() {
           width="100%"
           display="flex"
           flexDirection={["column", "row"]}
-          alignItems={["flex-start", "center"]} justifyContent="flex-start"
+          alignItems={["flex-start", "center"]}
+          justifyContent="flex-start"
           mt={[0, 30]}
           background={["white", "none"]}
           variants={variants}
@@ -50,7 +55,7 @@ export function Header() {
           height={["auto", "auto !important"]}
           opacity={["1", "1 !important"]}
         >
-          {[...Array(data.href.length).keys()].map(i => {
+          {[...Array(data.href.length).keys()].map((i) => {
             return (
               <Link key={i} href={data.href[i]} passHref>
                 <Clickable ml={i === 0 ? 0 : [0, 30]} mb={[20, 0]}>
@@ -71,7 +76,7 @@ export function Header() {
                   </Text>
                 </Clickable>
               </Link>
-            )
+            );
           })}
         </MotionDiv>
       </OutsideClickHandler>

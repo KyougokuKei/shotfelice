@@ -1,10 +1,11 @@
-import '../styles/globals.css'
-import '../styles/lib/reset.css'
+import "../styles/globals.css";
+import "../styles/lib/reset.css";
 
 import { AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../lib/theme";
-import { Header } from '../components/header/Header'
+import { Header } from "../components/header/Header";
+import { Footer } from "../components/footer/Footer";
 
 function MyApp({ Component, pageProps, router }) {
   return (
@@ -14,10 +15,10 @@ function MyApp({ Component, pageProps, router }) {
         <AnimatePresence exitBeforeEnter initial={false}>
           <Component {...pageProps} key={router.route} />
         </AnimatePresence>
+        <Footer />
       </ThemeProvider>
-
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
