@@ -3,7 +3,7 @@ import { SlickSlider } from "../SlickSlider/Slider";
 
 export function Garally({ garally, imgPaths }) {
   return (
-    <Box background="white">
+    <Box background="white" id="ギャラリー">
       <Box
         pt={60}
         pb={[24, 48]}

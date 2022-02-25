@@ -5,7 +5,7 @@ import { Button } from "../../components/Button";
 
 export function Service({ service }) {
   return (
-    <Box>
+    <Box id="サービス">
       <Box
         background="#F8F9FA"
         pb={[0, 40]}
@@ -95,11 +95,11 @@ export function Service({ service }) {
                   <Button
                     mt={[32]}
                     href="/reservation"
-                    width={["100%", "100%", 400]}
+                    width={["100%", "100%", 300]}
                     fontWeight="normal"
                     py={30}
                   >
-                    撮影を予約
+                    撮影を予約する
                   </Button>
                 </Box>
               )}

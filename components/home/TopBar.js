@@ -11,6 +11,7 @@ export function TopBar({ top_bar }) {
       justifyContent="center"
       display="flex"
       pt={10}
+      id="ホーム"
     >
       <Text
         display="flex"

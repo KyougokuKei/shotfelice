@@ -3,7 +3,7 @@ import { Box, MotionDiv, Clickable, Text } from "../../styles/components";
 import HamburgerMenu from "./HamburgerMenu";
 import OutsideClickHandler from "react-outside-click-handler";
 import Link from "next/link";
-import { data } from "./data";
+const data = require("./data");
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);

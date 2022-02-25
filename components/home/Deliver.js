@@ -9,10 +9,11 @@ export function Deliver({ deliver }) {
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
+      py={[100, 160, 160]}
+      id="お届けまでの流れ"
     >
       {/* Deliver Head */}
       <Box
-        pt={[60, 80, 100]}
         display="flex"
         alignItems="center"
         justifyContent="center"
@@ -133,7 +134,6 @@ export function Deliver({ deliver }) {
       {/* Deliver Footer */}
       <Box
         justifyContent="center"
-        mb={100}
         width={["calc(100% - 60px)", "inherit", "inherit"]}
         display={["none", "block", "block"]}
       >
