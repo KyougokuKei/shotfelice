@@ -15,7 +15,7 @@ import {
 const siteURL = "https://shotfelice.vercel.app/";
 export function SNS() {
   return (
-    <Box mt={100}>
+    <Box mt={[40, 100]}>
       <LineShareButton url={siteURL} style={{ marginRight: "14px" }}>
         <Line width={24} height={24} white />
       </LineShareButton>

@@ -19,7 +19,7 @@ export function Nav({ list, active, setActive }) {
               key={index}
               onClick={() => setActive(category)}
               mr={[
-                index === list.length - 1 ? 0 : 10,
+                index === list.length - 1 ? 0 : 20,
                 index === list.length - 1 ? 0 : 20,
               ]}
               position="relative"

@@ -21,10 +21,11 @@ export function Footer() {
       width="100%"
       background="#212529"
       py={100}
-      px="5%"
+      px={["10%", "5%"]}
       color="greye"
+      style={{ whiteSpace: "nowrap" }}
     >
-      <Box display="flex" width="100%">
+      <Box display="flex" width="100%" flexDirection={["column", "row"]}>
         {/* Left */}
         <Box width="36%" mr="auto">
           <Box fontSize={32} fontWeight="bold" mb={8}>
@@ -41,7 +42,7 @@ export function Footer() {
         </Box>
 
         {/* Right */}
-        <Box fontSize={16} mr={[0, 60, 120]}>
+        <Box fontSize={16} mr={[0, 60, 120]} mt={[40, 0]}>
           {/* ホーム */}
           <MotionDiv
             whileHover={{ opacity: 0.8 }}
@@ -60,7 +61,7 @@ export function Footer() {
         </Box>
 
         {/* お問い合わせ */}
-        <Box fontSize={16} mr={[0, 60, 120]}>
+        <Box fontSize={16} mr={[0, 60, 120]} mt={[40, 0]}>
           <MotionDiv
             whileHover={{ opacity: 0.8 }}
             fontWeight="bold"
@@ -76,7 +77,7 @@ export function Footer() {
           ))}
         </Box>
         {/* その他 */}
-        <Box fontSize={16}>
+        <Box fontSize={16} mt={[40, 0]}>
           <MotionDiv
             whileHover={{ opacity: 0.8 }}
             fontWeight="bold"
@@ -95,8 +96,14 @@ export function Footer() {
           </MotionDiv>
         </Box>
       </Box>
-      <Box mt={64} display="flex" alignItems="center" justifyContent="flex-end">
-        <Box fontSize={16} color="grey8" mr="auto">
+      <Box
+        mt={[40, 64]}
+        display="flex"
+        alignItems={["flex-start", "center"]}
+        justifyContent="flex-end"
+        flexDirection={["column-reverse", "row"]}
+      >
+        <Box fontSize={16} color="grey8" mr="auto" mt={[20, 0]}>
           {data.foot.copyright}
         </Box>
 

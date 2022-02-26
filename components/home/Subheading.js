@@ -23,6 +23,7 @@ export function Subheading({ subheading, nav }) {
         fontSize={[54, 64, 64]}
         lineHeight="1.05"
         fontWeight="bold"
+        style={{ whiteSpace: "nowrap" }}
       >
         {subheading.title.split("<br>").map((str, index) => {
           return (
