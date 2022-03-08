@@ -1,43 +1,44 @@
 ---
 top_bar:
-    company: ShotFelice
-    short_catchphrase_jp: 簡単・素早く写真を撮影！
-    short_catchphrase_en: Fast and simple shot
-    phone_number: 080-7065-9845
+  company: ShotFelice
+  short_catchphrase_jp: 簡単・素早く写真を撮影！
+  short_catchphrase_en: Fast and simple shot
+  phone_number: 080-7065-9845
 nav:
-    href: ["/", "/reservation", "/contact", "/profile"]
-    title_jp: ["ホーム", "撮影のご予約", "お問い合わせ", "私について"]
-    title_en: ["Home", "Reservation", "Contact", "Profile"]
+  href: ["/", "/reservation", "/contact", "/profile"]
+  title_jp: ["ホーム", "撮影のご予約", "お問い合わせ", "私について"]
+  title_en: ["Home", "Reservation", "Contact", "Profile"]
 subheading:
-    title: その思い出を<br>永遠の１枚に。
-    subtitle: Photo for everyone
-    body: ShotFeliceは、簡単・ネット予約で撮影を申し込み、カメラマンが出張して、お客様の撮影を行います。撮影は柔軟な対応ができますので、お気軽にご相談ください。
+  title: その思い出を<br>永遠の１枚に。
+  subtitle: Photo for everyone
+  body: ShotFeliceは、簡単・ネット予約で撮影を申し込み、カメラマンが出張して、お客様の撮影を行います。撮影は柔軟な対応ができますので、お気軽にご相談ください。
 garally:
-    title_jp: ギャラリー
-    title_en: Garally
+  title_jp: ギャラリー
+  title_en: Garally
 deliver:
-    title_en: Deliver photos quickly
-    title_jp: 素早く写真をお届け
-    step_title: ["簡単ネット予約", "撮影する", "写真のお届け"]
-    step_content: [
-        "「撮影のご予約」ページからご案内の手順に沿って、簡単に撮影をお申し込み頂けます",
-        "指定した場所・日時に、カメラマンが出張し、撮影を行います。",
-        "撮影した写真は、数日後にデータとプリントした写真の両方をお届けします。",
-        ]
+  title_en: Deliver photos quickly
+  title_jp: 素早く写真をお届け
+  step_title: ["簡単ネット予約", "撮影する", "写真のお届け"]
+  step_content:
+    [
+      "「撮影のご予約」ページからご案内の手順に沿って、簡単に撮影をお申し込み頂けます",
+      "指定した場所・日時に、カメラマンが出張し、撮影を行います。",
+      "撮影した写真は、数日後にデータとプリントした写真の両方をお届けします。",
+    ]
 service:
-    title_jp: 撮影サービス
-    title_en: Shooting service 
-    feature:
-        edit:
-            title: ["gold_photoshop", "編集で<br>写真を美しく"]
-            sub_title: お客様のご要望に応じて、写真加工で明度・色彩の調整し、撮影当日の「天候が悪い」「屋外で暗い」などの問題を解消したり、写りの悪い余計なものを除いて、人物を生き生きとさせます。
-        shot:
-            title: ["撮影を", "gold_明るく", "楽しく"]
-            sub_title: 現場を明るくし、お客様が笑顔に、自然体でいられるような環境を作ります。その他のこだわり、ご要望などありましたら、撮影当日であっても柔軟に対応します。
-        outdoor:
-            title: ["gold_屋外", "での撮影もOK"]
-            sub_title: キャンプ・釣りなど趣味での外出や、七五三・卒業式など屋外での行事・イベントにご同行し撮影します。
-        camera:
-            title: ["gold_素早く", "<br>お手軽価格で撮影"]
-            sub_title: 撮影内容は予約画面のフォームに送っていただければ、柔軟に対応いたします。お客様一人一人の思い出を大切に撮影します。
+  title_jp: 撮影サービス
+  title_en: Shooting service
+  feature:
+    edit:
+      title: ["gold_photoshop", "編集で<br>写真を美しく"]
+      sub_title: お客様のご要望に応じて、写真加工で明度・色彩の調整し、撮影当日の「天候が悪い」「屋外で暗い」などの問題を解消したり、写りの悪い余計なものを除いて、人物を生き生きとさせます。
+    shot:
+      title: ["撮影を", "gold_明るく", "楽しく"]
+      sub_title: 現場を明るくし、お客様が笑顔に、自然体でいられるような環境を作ります。その他のこだわり、ご要望などありましたら、撮影当日であっても柔軟に対応します。
+    outdoor:
+      title: ["gold_屋外", "での撮影もOK"]
+      sub_title: キャンプ・釣りなど趣味での外出や、七五三・卒業式など屋外での行事・イベントにご同行し撮影します。
+    camera:
+      title: ["gold_素早く", "<br>お手軽価格で撮影"]
+      sub_title: 撮影内容は予約画面のフォームに送っていただければ、柔軟に対応いたします。お客様一人一人の思い出を大切に撮影します。
 ---

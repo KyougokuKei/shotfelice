@@ -25,6 +25,21 @@ a {
   box-sizing: border-box;
 }
 
+.pointer {
+  cursor: pointer;
+}
+.pointer:hover {
+  opacity: 0.8;
+}
+
+.noscroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.noscroll::-webkit-scrollbar {
+  display: none;
+}
+
 @font-face {
   font-family: "TsukushiAMaruGhothic";
   font-weight: normal;

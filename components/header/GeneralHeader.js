@@ -18,10 +18,12 @@ export function GeneralHeader() {
     false: {
       opacity: 0,
       height: 0,
+      paddingTop: 0,
     },
     true: {
       opacity: 1,
       height: 300,
+      paddingTop: 40,
     },
   };
   return (
@@ -33,7 +35,8 @@ export function GeneralHeader() {
       top={0}
       width="100%"
       height={[80, 90]}
-      zIndex={3}
+      zIndex={7}
+      background="white"
     >
       <OutsideClickHandler
         style={{ height: "100%", position: "relative" }}
@@ -79,7 +82,6 @@ export function GeneralHeader() {
           <MotionDiv
             position="absolute"
             px={["5%", 80]}
-            py={[40, 0]}
             top={[80, "inherit"]}
             width="100%"
             display="flex"
@@ -93,13 +95,12 @@ export function GeneralHeader() {
             animate={String(isOpen)}
             height={["auto", "auto !important"]}
             opacity={["1", "1 !important"]}
+            background="white"
             // background="#aaa"
           >
             {[...Array(data.href.length).keys()].map((i) => {
               const href = data.href[i].slice(1);
-
               const active = isActive(router, href);
-              console.log(href);
               return (
                 <Link key={i} href={data.href[i]} passHref>
                   <Clickable ml={i === 0 ? 0 : [0, 30]} mb={[20, 0]}>
