@@ -4,14 +4,14 @@ import "../styles/lib/reset.css";
 import { AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../lib/theme";
-import { Header } from "../components/header/Header";
+import { GeneralHeader } from "../components/header/GeneralHeader";
 import { Footer } from "../components/footer/Footer";
 
 function MyApp({ Component, pageProps, router }) {
   return (
     <>
       <ThemeProvider theme={theme}>
-        {router.route !== "/" && <Header />}
+        {router.route !== "/" && <GeneralHeader />}
         <AnimatePresence exitBeforeEnter initial={false}>
           <Component {...pageProps} key={router.route} />
         </AnimatePresence>
