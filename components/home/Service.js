@@ -31,7 +31,7 @@ export function Service({ service }) {
           <Box
             key={index}
             width="100vw"
-            height={["auto", 480, 580]}
+            height={["auto", 360, 460]}
             background={isOdd ? "#F8F9FA" : "#FFFFFF"}
             display="flex"
             alignItems="center"
@@ -40,7 +40,7 @@ export function Service({ service }) {
             pb={[40, 0]}
           >
             <Box
-              width={["100%", "50%", "50%"]}
+              width={["100%", "50%", "40%"]}
               height="100%"
               display="flex"
               alignItems="flex-end"
@@ -51,7 +51,7 @@ export function Service({ service }) {
                 width="100%"
                 height="auto"
                 mb={[40, 0]}
-                maxWidth={["none", 480, 580]}
+                maxWidth={["none", 340, 440]}
               >
                 <Image
                   src={"/img/service/" + key + ".png"}
@@ -67,8 +67,7 @@ export function Service({ service }) {
             <Box
               display="flex"
               flexDirection="column"
-              fontWeight="bold"
-              width={["100%", "50%", "50%"]}
+              width={["100%", "50%", "60%"]}
               px={"5%"}
             >
               <Box
@@ -76,6 +75,7 @@ export function Service({ service }) {
                 lineHeight={1.4}
                 mb={[20, 32]}
                 textAlign={isOdd ? "left" : "right"}
+                fontWeight="bold"
               >
                 {convertGoldText(service.feature[key].title)}
               </Box>
@@ -83,6 +83,7 @@ export function Service({ service }) {
                 color="grey5"
                 lineHeight={1.8}
                 textAlign={isOdd ? "left" : "right"}
+                fontWeight="bold"
               >
                 {service.feature[key].sub_title}
               </Box>
