@@ -72,6 +72,7 @@ export function GeneralHeader() {
             display={["flex", "none", "flex"]}
             alignItems="center"
             justifyContent="center"
+            zIndex={1}
           >
             <Logo width={24} />
             <Box ml={4} fontSize={24} fontWeight="bold">
@@ -125,7 +126,7 @@ export function GeneralHeader() {
             })}
           </MotionDiv>
 
-          <Box ml="auto" display={["none", "flex"]}>
+          <Box ml="auto" display={["none", "flex"]} zIndex={1}>
             <Clickable
               as="a"
               href="https://www.instagram.com/hamu_kimi5118"

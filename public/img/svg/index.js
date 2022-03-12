@@ -30,3 +30,4 @@ export * from "./InstagramTxt";
 export * from "./Line";
 export * from "./Hatena";
 export * from "./Step_arrow";
+export * from "./ListCheck";

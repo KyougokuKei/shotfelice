@@ -66,7 +66,7 @@ export default function Reservation({ data }) {
           </Box>
 
           <Button href="/reservation/step2" mt={42} mb={200}>
-            {data.step1.btn_text}
+            {data.next_btn_text}
           </Button>
         </Box>
       </Box>

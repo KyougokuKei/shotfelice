@@ -67,8 +67,8 @@ function NormalCard(props) {
         mr={20}
         zIndex={props.i}
         ml={props.content[0] === "1" ? 0 : -20}
-        fontWeight="bold"
-        fontSize={[12, 14]}
+        // fontWeight="bold"
+        fontSize={[13, 14]}
       >
         {props.content}
         <Step_arrow
@@ -85,7 +85,6 @@ function NormalCard(props) {
 }
 
 function ActiveCard(props) {
-  console.log(props.content[0]);
   return (
     <Link href={props.href}>
       <Box
@@ -103,7 +102,7 @@ function ActiveCard(props) {
         ml={props.content[0] === "1" ? 0 : -20}
         color="white"
         fontWeight="bold"
-        fontSize={[12, 14]}
+        fontSize={[13, 14]}
       >
         {props.content}
         <Box

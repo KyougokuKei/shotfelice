@@ -1,6 +1,16 @@
-import styled from 'styled-components'
-import { flexbox, space, layout, border, position, background, typography, shadow, color } from 'styled-system'
-import { motion } from 'framer-motion'
+import styled from "styled-components";
+import {
+  flexbox,
+  space,
+  layout,
+  border,
+  position,
+  background,
+  typography,
+  shadow,
+  color,
+} from "styled-system";
+import { motion } from "framer-motion";
 
 export const MotionDiv = styled(motion.div)`
   ${flexbox};
@@ -13,6 +23,16 @@ export const MotionDiv = styled(motion.div)`
   ${shadow};
   ${color};
   ${(props) => props.bg && `background-color: ${props.theme.colors[props.bg]}`};
-`
-
-
+`;
+export const MotionInput = styled(motion.input)`
+  ${flexbox};
+  ${space};
+  ${layout};
+  ${border};
+  ${position};
+  ${background};
+  ${typography};
+  ${shadow};
+  ${color};
+  ${(props) => props.bg && `background-color: ${props.theme.colors[props.bg]}`};
+`;
