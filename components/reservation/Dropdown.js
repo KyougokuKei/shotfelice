@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Box, MotionDiv } from "../../styles/components";
 import { AnimatePresence } from "framer-motion";
-import OutsideClickHandler from "react-outside-click-handler";
 import { usePersist } from "../../lib/usepersist";
+import OutsideClicker from "../../components/OutsideClicker";
 // Select2(value, setValue, placeholder, list)
 export function Dropdown(props) {
   const myRef = useRef("");
@@ -60,7 +60,7 @@ export function Dropdown(props) {
       {/* ------------------Toggle List------------------ */}
       <AnimatePresence>
         {toggle && (
-          <OutsideClickHandler onOutsideClick={() => setToggle(false)}>
+          <OutsideClicker onOutsideClick={() => setToggle(false)}>
             <MotionDiv
               maxHeight={200}
               overflowY="scroll"
@@ -107,7 +107,7 @@ export function Dropdown(props) {
                 );
               })}
             </MotionDiv>
-          </OutsideClickHandler>
+          </OutsideClicker>
         )}
       </AnimatePresence>
     </MotionDiv>
