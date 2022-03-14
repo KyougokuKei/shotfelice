@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { usePersist } from "../../lib/usepersist";
 import { Box, MotionDiv } from "../../styles/components";
 import { ListCheck } from "../../public/img/svg";
 
 export function SelectList(props) {
-  const defaultValue =
-    typeof window !== "undefined"
-      ? JSON.parse(localStorage.getItem(props.name0))
-      : [];
-  const [selected, setSelected] = useState(defaultValue);
+  const [arr, setArr] = usePersist(props.name0, []);
+  const [selected, setSelected] = useState(arr);
   const prices = props.price ? props.price : [];
 
   useEffect(() => {
     const sort_selected = selected.sort((a, b) => a - b);
-    const selectedItem = sort_selected.map((item) => props.list[item]);
-    const selectedPrice = sort_selected.map((item) => prices[item]);
-    localStorage.setItem(props.name0, JSON.stringify(sort_selected));
-    localStorage.setItem(props.name1, JSON.stringify(selectedItem));
-    localStorage.setItem(props.name2, JSON.stringify(selectedPrice));
+    setArr(sort_selected);
+    // const selectedItem = sort_selected.map((item) => props.list[item]);
+    // const selectedPrice = sort_selected.map((item) => prices[item]);
+    // localStorage.setItem(props.name1, JSON.stringify(selectedItem));
+    // localStorage.setItem(props.name2, JSON.stringify(selectedPrice));
   }, [selected]);
 
   return (
