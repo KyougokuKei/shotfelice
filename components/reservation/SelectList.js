@@ -4,17 +4,13 @@ import { Box, MotionDiv } from "../../styles/components";
 import { ListCheck } from "../../public/img/svg";
 
 export function SelectList(props) {
-  const [arr, setArr] = usePersist(props.name0, []);
+  const [arr, setArr] = usePersist(props.name, []);
   const [selected, setSelected] = useState(arr);
   const prices = props.price ? props.price : [];
 
   useEffect(() => {
     const sort_selected = selected.sort((a, b) => a - b);
     setArr(sort_selected);
-    // const selectedItem = sort_selected.map((item) => props.list[item]);
-    // const selectedPrice = sort_selected.map((item) => prices[item]);
-    // localStorage.setItem(props.name1, JSON.stringify(selectedItem));
-    // localStorage.setItem(props.name2, JSON.stringify(selectedPrice));
   }, [selected]);
 
   return (

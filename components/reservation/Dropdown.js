@@ -2,12 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import { Box, MotionDiv } from "../../styles/components";
 import { AnimatePresence } from "framer-motion";
 import OutsideClickHandler from "react-outside-click-handler";
-
+import { usePersist } from "../../lib/usepersist";
 // Select2(value, setValue, placeholder, list)
 export function Dropdown(props) {
   const myRef = useRef("");
+  const [value, setValue] = usePersist(props.strage_key, "");
   const [toggle, setToggle] = useState(false);
   const [top, setTop] = useState(false);
+  value ? props.setValue(value) : null;
 
   useEffect(() => {
     if (myRef.current !== null) {
@@ -46,9 +48,12 @@ export function Dropdown(props) {
         display="inline-block"
         mr="auto"
         fontWeight="normal"
-        color={props.value ? "black" : "gray7"}
+        color={props.value ? "black" : "grey7"}
       >
         {props.value ? props.value : props.placeholder}
+        <Box as="span" ml={4}>
+          {props.prefix && props.value ? props.prefix : ""}
+        </Box>
       </Box>
 
       <Arrow toggle={toggle} />
@@ -82,7 +87,7 @@ export function Dropdown(props) {
                     key={index}
                     onTap={() => {
                       props.setValue(item);
-                      localStorage.setItem(props.placeholder, item);
+                      setValue(item);
                     }}
                     background="white"
                     whileHover={{ backgroundColor: "#eee" }}

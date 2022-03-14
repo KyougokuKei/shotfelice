@@ -25,6 +25,7 @@ export const MotionDiv = styled(motion.div)`
   ${(props) => props.bg && `background-color: ${props.theme.colors[props.bg]}`};
 `;
 export const MotionInput = styled(motion.input)`
+  font-family: "Noto Sans JP", sans-serif;
   ${flexbox};
   ${space};
   ${layout};

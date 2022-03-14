@@ -13,7 +13,7 @@ import { getPostData } from "../../lib/posts";
 import Head from "next/head";
 import { Button } from "../../components/Button";
 
-import styled from "styled-components";
+import { usePersist } from "../../lib/usepersist";
 
 export const getStaticProps = async () => {
   const postData = await getPostData("reservation");
@@ -27,7 +27,10 @@ export const getStaticProps = async () => {
 export default function Reservation({ data }) {
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
+  const [time, setTime] = useState("");
   const [prefecture, setPrefecture] = useState("");
+  const [_address, _setAddress] = usePersist("address", "");
+  const [address, setAddress] = useState(_address);
 
   return (
     <PageTransition>
@@ -59,18 +62,14 @@ export default function Reservation({ data }) {
             multipleSelect
             list={data.step2.category.categories.wedding}
             price={data.step2.numver_of_shots.price}
-            name0="category_detail_i"
-            name1="category_detail"
-            name2="category_detail_price"
+            name="category_detail"
           />
 
           <PlanTitle data={data.step2.numver_of_shots} />
           <SelectList
             list={data.step2.numver_of_shots.num}
             price={data.step2.numver_of_shots.price}
-            name0="numver_of_shots_i"
-            name1="numver_of_shots_num"
-            name2="numver_of_shots_price"
+            name="number_of_shots"
           />
 
           <PlanTitle data={data.step2.data_type} multipleSelect />
@@ -78,9 +77,7 @@ export default function Reservation({ data }) {
             multipleSelect
             list={data.step2.data_type.type}
             price={data.step2.data_type.price}
-            name0="data_type_i"
-            name1="data_type_num"
-            name2="data_type_price"
+            name="data_type"
           />
           {/* --- Input title---- */}
           <Box fontWeight="bold" fontSize={26} mt={50} mb={14}>
@@ -98,7 +95,7 @@ export default function Reservation({ data }) {
             display="flex"
             alignItems="center"
           >
-            {data.step2.date_and_place.date_title_en}
+            {data.step2.date.date_title_en}
             <RequiredBox required />
           </Box>
           <Box
@@ -110,14 +107,17 @@ export default function Reservation({ data }) {
             border="solid 1px #e1e1e1"
           >
             <Dropdown
+              strage_key="month"
               value={month}
               setValue={setMonth}
               list={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
               placeholder="月"
+              prefix="月"
               width={"70%"}
             />
             <Box width="1px" background="#e1e1e1" mx={10} />
             <Dropdown
+              strage_key="day"
               value={day}
               setValue={setDay}
               list={[
@@ -125,7 +125,25 @@ export default function Reservation({ data }) {
                 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
               ]}
               placeholder="日"
+              prefix="日"
               width={"30%"}
+            />
+          </Box>
+          <Box
+            width="100%"
+            height={84}
+            py={10}
+            px={20}
+            display="flex"
+            border="solid 1px #e1e1e1"
+            borderTop="none"
+          >
+            <Dropdown
+              strage_key="time"
+              value={time}
+              setValue={setTime}
+              list={data.step2.date.time_list}
+              placeholder="時間"
             />
           </Box>
 
@@ -138,7 +156,7 @@ export default function Reservation({ data }) {
             display="flex"
             alignItems="center"
           >
-            {data.step2.date_and_place.place_title_en}
+            {data.step2.place.place_title_en}
             <RequiredBox required />
           </Box>
           <Box
@@ -150,19 +168,25 @@ export default function Reservation({ data }) {
             border="solid 1px #e1e1e1"
           >
             <Dropdown
+              strage_key="prefecture"
               value={prefecture}
               setValue={setPrefecture}
-              list={data.step2.date_and_place.prefecture}
+              list={data.step2.place.prefecture}
               placeholder="都道府県"
             />
             <Box width="100%" height={1} background="#e1e1e1" my={10} />
             <MotionInput
               height={64}
               px={20}
-              placeholder={data.step2.date_and_place.address2_placeholder}
+              placeholder={data.step2.place.address2_placeholder}
               style={{ outline: "none" }}
               whileFocus={{ border: "1px solid #333", scale: 1.005 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}
+              value={address}
+              onChange={(e) => {
+                setAddress(e.target.value);
+                _setAddress(e.target.value);
+              }}
             />
           </Box>
 
