@@ -11,7 +11,14 @@ const data = require("./data");
 export function GeneralHeader() {
   const router = useRouter();
   const isActive = (router, path) => {
-    return router.asPath === `/${path}`;
+    if (
+      router.asPath.startsWith("/reservation") &&
+      path.startsWith("reservation")
+    ) {
+      return true;
+    } else {
+      return router.asPath === `/${path}`;
+    }
   };
   const [isOpen, setIsOpen] = useState(false);
   const variants = {
