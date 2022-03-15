@@ -8,7 +8,7 @@ import {
   Dropdown,
   RequiredBox,
 } from "../../components/reservation";
-import { getPostData } from "../../lib/posts";
+import { getPostDatas } from "../../lib/posts";
 
 import Head from "next/head";
 import { Button } from "../../components/Button";
@@ -16,7 +16,10 @@ import { Button } from "../../components/Button";
 import { usePersist } from "../../lib/usepersist";
 
 export const getStaticProps = async () => {
-  const postData = await getPostData("reservation");
+  const postData = await getPostDatas([
+    "reservation/common",
+    "reservation/step2",
+  ]);
   return {
     props: {
       data: postData,
@@ -57,34 +60,34 @@ export default function Step2({ data }) {
           </Box>
 
           {/* ---- Select Input ---- */}
-          <PlanTitle data={data.step2.category} multipleSelect required />
+          <PlanTitle data={data.category} multipleSelect required />
           <SelectList
             multipleSelect
-            list={data.step2.category.categories.wedding}
-            price={data.step2.numver_of_shots.price}
+            list={data.category.categories.wedding}
+            price={data.numver_of_shots.price}
             name="category_detail"
           />
 
-          <PlanTitle data={data.step2.numver_of_shots} />
+          <PlanTitle data={data.numver_of_shots} />
           <SelectList
-            list={data.step2.numver_of_shots.num}
-            price={data.step2.numver_of_shots.price}
+            list={data.numver_of_shots.num}
+            price={data.numver_of_shots.price}
             name="number_of_shots"
           />
 
-          <PlanTitle data={data.step2.data_type} multipleSelect />
+          <PlanTitle data={data.data_type} multipleSelect />
           <SelectList
             multipleSelect
-            list={data.step2.data_type.type}
-            price={data.step2.data_type.price}
+            list={data.data_type.type}
+            price={data.data_type.price}
             name="data_type"
           />
           {/* --- Input title---- */}
           <Box fontWeight="bold" fontSize={26} mt={50} mb={14}>
-            {data.step2.date_and_place.title}
+            {data.date_and_place.title}
           </Box>
           <Box fontSize={16} mb={40} lineHeight={1.6}>
-            {data.step2.date_and_place.content}
+            {data.date_and_place.content}
           </Box>
 
           {/* ---- Date Input ---- */}
@@ -95,7 +98,7 @@ export default function Step2({ data }) {
             display="flex"
             alignItems="center"
           >
-            {data.step2.date.date_title_en}
+            {data.date.date_title_en}
             <RequiredBox required />
           </Box>
           <Box
@@ -120,10 +123,7 @@ export default function Step2({ data }) {
               strage_key="day"
               value={day}
               setValue={setDay}
-              list={[
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-                19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
-              ]}
+              list={[...Array(31).keys()].map((i) => i + 1)}
               placeholder="日"
               prefix="日"
               width={"30%"}
@@ -142,7 +142,7 @@ export default function Step2({ data }) {
               strage_key="time"
               value={time}
               setValue={setTime}
-              list={data.step2.date.time_list}
+              list={data.date.time_list}
               placeholder="時間"
             />
           </Box>
@@ -156,7 +156,7 @@ export default function Step2({ data }) {
             display="flex"
             alignItems="center"
           >
-            {data.step2.place.place_title_en}
+            {data.place.place_title_en}
             <RequiredBox required />
           </Box>
           <Box
@@ -171,14 +171,14 @@ export default function Step2({ data }) {
               strage_key="prefecture"
               value={prefecture}
               setValue={setPrefecture}
-              list={data.step2.place.prefecture}
+              list={data.place.prefecture}
               placeholder="都道府県"
             />
             <Box width="100%" height={1} background="#e1e1e1" my={10} />
             <MotionInput
               height={64}
               px={20}
-              placeholder={data.step2.place.address2_placeholder}
+              placeholder={data.place.address2_placeholder}
               style={{ outline: "none" }}
               whileFocus={{ border: "1px solid #333", scale: 1.005 }}
               transition={{ duration: 0.2, ease: "easeInOut" }}

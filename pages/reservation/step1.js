@@ -2,17 +2,21 @@ import React, { useState } from "react";
 import { Box, MotionDiv } from "../../styles/components";
 import { PageTransition } from "../../components/PageTransition";
 import { Nav } from "../../components/reservation/Nav";
-import { getPostData } from "../../lib/posts";
+import { getPostDatas } from "../../lib/posts";
 import { convertLink } from "../../lib/convert";
 import Image from "next/image";
 import Head from "next/head";
 import { Button } from "../../components/Button";
 
 export const getStaticProps = async () => {
-  const postData = await getPostData("reservation");
+  const postDatas = await getPostDatas([
+    "reservation/common",
+    "reservation/step1",
+  ]);
+  console.log(postDatas);
   return {
     props: {
-      data: postData,
+      data: postDatas,
     },
   };
 };
@@ -39,10 +43,12 @@ export default function Step1({ data }) {
               color="black"
             >
               <Box fontSize={34}>1.</Box>
-              <Box fontSize={24}>撮影カテゴリの選択</Box>
+              <Box fontSize={24}>
+                {data.nav[0].slice(2, data.nav[0].length)}
+              </Box>
             </Box>
             <Box fontSize={16} mt={26} mb={26} lineHeight={2}>
-              {convertLink(data.step1.content)}
+              {convertLink(data.content)}
             </Box>
           </Box>
 
@@ -52,13 +58,13 @@ export default function Step1({ data }) {
             flexWrap="wrap"
             style={{ boxSizing: "border-box" }}
           >
-            {[...Array(data.step1.items.title.length).keys()].map((i) => {
+            {[...Array(data.items.title.length).keys()].map((i) => {
               return (
                 <Card
                   key={i}
                   active={active}
                   setActive={setActive}
-                  items={data.step1.items}
+                  items={data.items}
                   index={i}
                 />
               );

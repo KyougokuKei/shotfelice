@@ -8,7 +8,7 @@ import {
   Dropdown,
   RequiredBox,
 } from "../../components/reservation";
-import { getPostData } from "../../lib/posts";
+import { getPostDatas } from "../../lib/posts";
 
 import Head from "next/head";
 import { Button } from "../../components/Button";
@@ -16,21 +16,19 @@ import { Button } from "../../components/Button";
 import { usePersist } from "../../lib/usepersist";
 
 export const getStaticProps = async () => {
-  const postData = await getPostData("reservation");
+  const postDatas = await getPostDatas([
+    "reservation/common",
+    "reservation/step3",
+  ]);
   return {
     props: {
-      data: postData,
+      data: postDatas,
     },
   };
 };
 
 export default function Step3({ data }) {
   const [month, setMonth] = useState("");
-  const [day, setDay] = useState("");
-  const [time, setTime] = useState("");
-  const [prefecture, setPrefecture] = useState("");
-  const [_address, _setAddress] = usePersist("address", "");
-  const [address, setAddress] = useState(_address);
 
   return (
     <PageTransition>
