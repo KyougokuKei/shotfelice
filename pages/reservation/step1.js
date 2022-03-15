@@ -13,7 +13,6 @@ export const getStaticProps = async () => {
     "reservation/common",
     "reservation/step1",
   ]);
-  console.log(postDatas);
   return {
     props: {
       data: postDatas,
@@ -23,6 +22,7 @@ export const getStaticProps = async () => {
 
 export default function Step1({ data }) {
   const [active, setActive] = useState("none");
+
   return (
     <PageTransition>
       <Head>
@@ -58,13 +58,13 @@ export default function Step1({ data }) {
             flexWrap="wrap"
             style={{ boxSizing: "border-box" }}
           >
-            {[...Array(data.items.title.length).keys()].map((i) => {
+            {Object.keys(data.categories).map((key, i) => {
               return (
                 <Card
                   key={i}
                   active={active}
                   setActive={setActive}
-                  items={data.items}
+                  data={data.categories[key]}
                   index={i}
                 />
               );
@@ -80,14 +80,14 @@ export default function Step1({ data }) {
   );
 }
 
-function Card({ active, setActive, items, index }) {
+function Card({ active, setActive, data, index }) {
   return (
     <MotionDiv
       whileHover={{ opacity: 0.8 }}
       onTap={() => {
-        if (active !== items.title[index]) {
-          setActive(items.title[index]);
-          localStorage.setItem("category", items.title[index]);
+        if (active !== data.title_en) {
+          setActive(data.title_en);
+          localStorage.setItem("category", data.title_en);
         } else {
           setActive("none");
           localStorage.setItem("category", "none");
@@ -112,10 +112,10 @@ function Card({ active, setActive, items, index }) {
           boxShadow: "0px 0px 0px rgba(0, 0, 0, 0.1)",
         },
       }}
-      animate={active === items.title[index] ? "active" : "inactive"}
+      animate={active === data.title ? "active" : "inactive"}
     >
       <Box width={160} height={160}>
-        <Image src={items.url[index]} width={160} height={160} alt={"person"} />
+        <Image src={data.url} width={160} height={160} alt={"person"} />
       </Box>
       <Box
         width="calc(100% - 160px)"
@@ -128,10 +128,10 @@ function Card({ active, setActive, items, index }) {
         px={20}
       >
         <Box fontSize={[18, 20]} fontWeight="bold" mb={10}>
-          {items.title[index]}
+          {data.title}
         </Box>
         <Box fontSize={14} lineHeight={1.6}>
-          {items.content[index]}
+          {data.content}
         </Box>
       </Box>
     </MotionDiv>
