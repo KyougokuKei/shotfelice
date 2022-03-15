@@ -11,7 +11,7 @@ import {
 import { getPostDatas } from "../../lib/posts";
 
 import Head from "next/head";
-import { Button } from "../../components/Button";
+import { BackButton, Button } from "../../components/Button";
 
 import { usePersist } from "../../lib/usepersist";
 
@@ -191,9 +191,20 @@ export default function Step2({ data }) {
           </Box>
 
           {/* ---- Next Button ---- */}
-          <Button href="/reservation/step3" mt={42} mb={200}>
+          <Button href="/reservation/step3" mt={42}>
             {data.next_btn_text}
           </Button>
+          <Box
+            width="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            mt={20}
+          >
+            <BackButton href="/reservation/step1" mt={10} mb={200} width={80}>
+              {data.back_btn_text}
+            </BackButton>
+          </Box>
         </Box>
       </Box>
     </PageTransition>

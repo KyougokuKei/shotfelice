@@ -165,9 +165,20 @@ export default function Step3({ data }) {
           />
 
           {/* ---- Next Button ---- */}
-          <Button href="/reservation/step4" mt={42} mb={200}>
+          <Button href="/reservation/step4" mt={42}>
             {data.next_btn_text}
           </Button>
+          <Box
+            width="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            mt={20}
+          >
+            <BackButton href="/reservation/step2" mt={10} mb={200} width={80}>
+              {data.back_btn_text}
+            </BackButton>
+          </Box>
         </Box>
       </Box>
     </PageTransition>
