@@ -1,22 +1,11 @@
-import React, { useState, useEffect } from "react";
-import {
-  Box,
-  MotionDiv,
-  MotionInput,
-  MotionTextarea,
-} from "../../styles/components";
+import React, { useState } from "react";
+import { Box, MotionInput, MotionTextarea } from "../../styles/components";
 import { PageTransition } from "../../components/PageTransition";
-import {
-  Nav,
-  SelectList,
-  PlanTitle,
-  Dropdown,
-  RequiredBox,
-} from "../../components/reservation";
+import { Nav, RequiredBox } from "../../components/reservation";
 import { getPostDatas } from "../../lib/posts";
 
 import Head from "next/head";
-import { Button } from "../../components/Button";
+import { Button, BackButton } from "../../components/Button";
 
 import { usePersist } from "../../lib/usepersist";
 
@@ -52,7 +41,6 @@ export default function Step3({ data }) {
           {/* ---- Step Header ---- */}
           <Nav nav={data.nav} />
           <Box my={[20, 50]} width="100%" borderBottom="solid 1px #e1e1e1" />
-
           {/* ---- Step title ---- */}
           <Box
             display="flex"
@@ -63,7 +51,6 @@ export default function Step3({ data }) {
             <Box fontSize={34}>3.</Box>
             <Box fontSize={24}>{data.nav[2].slice(2, data.nav[2].length)}</Box>
           </Box>
-
           <Box
             display="flex"
             alignItems="center"
@@ -76,7 +63,6 @@ export default function Step3({ data }) {
           >
             {data.title}
           </Box>
-
           {/* ---- Custumer Info Input ---- */}
           {/* phone */}
           <Box
@@ -100,7 +86,7 @@ export default function Step3({ data }) {
             transition={{ duration: 0.2, ease: "easeInOut" }}
             value={phone}
             border="solid 1px #e1e1e1"
-            fontSize={14}
+            fontSize={16}
             onChange={(e) => {
               setPhone(e.target.value);
               _setPhone(e.target.value);
@@ -128,7 +114,7 @@ export default function Step3({ data }) {
             transition={{ duration: 0.2, ease: "easeInOut" }}
             value={email}
             border="solid 1px #e1e1e1"
-            fontSize={14}
+            fontSize={16}
             onChange={(e) => {
               setEmail(e.target.value);
               _setEmail(e.target.value);
@@ -157,13 +143,12 @@ export default function Step3({ data }) {
             transition={{ duration: 0.2, ease: "easeInOut" }}
             value={request}
             border="solid 1px #e1e1e1"
-            fontSize={14}
+            fontSize={16}
             onChange={(e) => {
               setRequest(e.target.value);
               _setRequest(e.target.value);
             }}
           />
-
           {/* ---- Next Button ---- */}
           <Button href="/reservation/step4" mt={42}>
             {data.next_btn_text}

@@ -42,6 +42,7 @@ export const MotionInput = styled(motion.input)`
 export const MotionTextarea = styled(motion.textarea)`
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 200;
+  line-height: 1.8;
   ${flexbox};
   ${space};
   ${layout};

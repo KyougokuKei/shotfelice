@@ -8,4 +8,5 @@ nav:
     "5. 完了",
   ]
 next_btn_text: "次へ進む"
+back_btn_text: "戻る"
 ---
