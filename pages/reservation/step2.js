@@ -64,14 +64,14 @@ export default function Step2({ data }) {
           <SelectList
             multipleSelect
             list={data.category.categories.wedding}
-            price={data.numver_of_shots.price}
+            price={data.number_of_shots.price}
             name="category_detail"
           />
 
-          <PlanTitle data={data.numver_of_shots} />
+          <PlanTitle data={data.number_of_shots} />
           <SelectList
-            list={data.numver_of_shots.num}
-            price={data.numver_of_shots.price}
+            list={data.number_of_shots.num}
+            price={data.number_of_shots.price}
             name="number_of_shots"
           />
 

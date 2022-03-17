@@ -24,7 +24,7 @@ category:
         "演奏会等",
       ]
     else: ["宣材写真", "モデル写真", "PV/MV", "自然写真/動画", "動物写真/動画"]
-numver_of_shots:
+number_of_shots:
   title_jp: 撮影枚数
   title_en: number of shots
   num: ["60枚", "80枚", "100枚", "120枚"]
