@@ -7,6 +7,7 @@ import { convertLink } from "../../lib/convert";
 import Image from "next/image";
 import Head from "next/head";
 import { Button } from "../../components/Button";
+import { usePersist } from "../../lib/usepersist";
 
 export const getStaticProps = async () => {
   const postDatas = await getPostDatas([
@@ -21,7 +22,8 @@ export const getStaticProps = async () => {
 };
 
 export default function Step1({ data }) {
-  const [active, setActive] = useState("none");
+  const [_active, _setActive] = usePersist("category", "none");
+  const [active, setActive] = useState(_active);
 
   return (
     <PageTransition>
@@ -64,6 +66,7 @@ export default function Step1({ data }) {
                   key={i}
                   active={active}
                   setActive={setActive}
+                  _setActive={_setActive}
                   data={data.categories[key]}
                   index={i}
                 />
@@ -80,17 +83,17 @@ export default function Step1({ data }) {
   );
 }
 
-function Card({ active, setActive, data, index }) {
+function Card({ active, setActive, _setActive, data, index }) {
   return (
     <MotionDiv
       whileHover={{ opacity: 0.8 }}
       onTap={() => {
         if (active !== data.title_en) {
           setActive(data.title_en);
-          localStorage.setItem("category", data.title_en);
+          _setActive(data.title_en);
         } else {
           setActive("none");
-          localStorage.setItem("category", "none");
+          _setActive("none");
         }
       }}
       mr={[0, index % 2 === 0 ? 5 : 10]}
@@ -112,7 +115,7 @@ function Card({ active, setActive, data, index }) {
           boxShadow: "0px 0px 0px rgba(0, 0, 0, 0.1)",
         },
       }}
-      animate={active === data.title ? "active" : "inactive"}
+      animate={active === data.title_en ? "active" : "inactive"}
     >
       <Box width={160} height={160}>
         <Image src={data.url} width={160} height={160} alt={"person"} />
