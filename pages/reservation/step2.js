@@ -8,7 +8,7 @@ import {
   Dropdown,
   RequiredBox,
 } from "../../components/reservation";
-import { getPostDatas } from "../../lib/posts";
+import { loadYamls } from "../../lib/posts";
 
 import Head from "next/head";
 import Image from "next/image";
@@ -18,10 +18,10 @@ import { usePersist } from "../../lib/usepersist";
 import { insertBreak, insertCommaList } from "../../lib/convert";
 
 export const getStaticProps = async () => {
-  const postData = await getPostDatas([
-    "reservation/common",
-    "reservation/step2",
-    "reservation/step1",
+  const postData = await loadYamls([
+    "reservation/common.yml",
+    "reservation/step2.yml",
+    "reservation/step1.yml",
   ]);
   return {
     props: {
@@ -38,7 +38,6 @@ export default function Step2({ data }) {
   const [_address, _setAddress] = usePersist("address", "");
   const [address, setAddress] = useState(_address);
   const [category, setCategory] = usePersist("category", "person");
-  console.log(data.category.content);
   return (
     <PageTransition>
       <Head>

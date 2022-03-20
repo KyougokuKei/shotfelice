@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 import { Box } from "../styles/components";
-import { getPostData, getImgPaths } from "../lib/posts";
+import { loadYaml, getImgPaths } from "../lib/posts";
 
 import { PageTransition } from "../components/PageTransition";
 import { Header } from "../components/header/Header";
@@ -16,7 +16,7 @@ import {
 } from "../components/home";
 
 export const getStaticProps = async () => {
-  const postData = await getPostData("home");
+  const postData = await loadYaml("home.yml");
   const imgPaths = await getImgPaths();
   return {
     props: {
@@ -27,11 +27,6 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ data, imgPaths }) {
-  // ホームディレクトリのみpadding-top : 0;
-  // if (typeof document !== "undefined") {
-  //   document.getElementsByTagName("body")[0].style.paddingTop = 0;
-  // }
-
   return (
     <PageTransition width="100%" mt={-90}>
       <Head>

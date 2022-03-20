@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, MotionInput, MotionTextarea } from "../../styles/components";
 import { PageTransition } from "../../components/PageTransition";
 import { Nav, RequiredBox } from "../../components/reservation";
-import { getPostDatas } from "../../lib/posts";
+import { loadYamls } from "../../lib/posts";
 
 import Head from "next/head";
 import { Button, BackButton } from "../../components/Button";
@@ -10,9 +10,9 @@ import { Button, BackButton } from "../../components/Button";
 import { usePersist } from "../../lib/usepersist";
 
 export const getStaticProps = async () => {
-  const postDatas = await getPostDatas([
-    "reservation/common",
-    "reservation/step3",
+  const postDatas = await loadYamls([
+    "reservation/common.yml",
+    "reservation/step3.yml",
   ]);
   return {
     props: {
