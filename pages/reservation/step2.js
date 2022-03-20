@@ -11,14 +11,17 @@ import {
 import { getPostDatas } from "../../lib/posts";
 
 import Head from "next/head";
+import Image from "next/image";
 import { BackButton, Button } from "../../components/Button";
 
 import { usePersist } from "../../lib/usepersist";
+import { insertBreak, insertCommaList } from "../../lib/convert";
 
 export const getStaticProps = async () => {
   const postData = await getPostDatas([
     "reservation/common",
     "reservation/step2",
+    "reservation/step1",
   ]);
   return {
     props: {
@@ -34,7 +37,8 @@ export default function Step2({ data }) {
   const [prefecture, setPrefecture] = useState("");
   const [_address, _setAddress] = usePersist("address", "");
   const [address, setAddress] = useState(_address);
-
+  const [category, setCategory] = usePersist("category", "person");
+  console.log(data.category.content);
   return (
     <PageTransition>
       <Head>
@@ -61,25 +65,113 @@ export default function Step2({ data }) {
 
           {/* ---- Select Input ---- */}
           <PlanTitle data={data.category} multipleSelect required />
+
+          <Box
+            mb={24}
+            ml={10}
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-start"
+          >
+            <MotionDiv
+              width={100}
+              height={100}
+              border="solid 1px white"
+              boxShadow="0 4px 8px rgba(0,0,0, 0.2)"
+              animate={{ rotate: -2 }}
+              mr={60}
+            >
+              <Image
+                src={"/img/category/" + category + ".jpg"}
+                width={100}
+                height={100}
+              />
+            </MotionDiv>
+            <Box fontSize={16} fontWeight="normal" lineHeight={1.8}>
+              {data.categories[category].title}
+              {insertBreak(data.category.content)}
+            </Box>
+          </Box>
+
           <SelectList
             multipleSelect
             list={data.category.categories.wedding}
-            price={data.number_of_shots.price}
+            // price={data.number_of_shots.price}
             name="category_detail"
           />
 
           <PlanTitle data={data.number_of_shots} />
+
+          <Box
+            mb={24}
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-start"
+          >
+            <Box
+              width={170}
+              mr={16}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              flexDirection="column"
+              fontWeight="bold"
+            >
+              <Image src={"/img/general/photos.png"} width={513} height={412} />
+              <Box mt={-20} fontSize={16}>
+                60枚
+              </Box>
+              <Box fontSize={14}>free</Box>
+            </Box>
+            <Box fontSize={60} color="grey5" mr={30}>
+              +
+            </Box>
+            <Box fontSize={16} fontWeight="normal" lineHeight={1.8}>
+              {insertBreak(data.number_of_shots.content)}
+            </Box>
+          </Box>
+
           <SelectList
-            list={data.number_of_shots.num}
-            price={data.number_of_shots.price}
+            list={Object.keys(data.number_of_shots.fee)}
+            price={insertCommaList(Object.values(data.number_of_shots.fee))}
             name="number_of_shots"
           />
 
           <PlanTitle data={data.data_type} multipleSelect />
+
+          <Box
+            mb={24}
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-start"
+          >
+            <Box
+              width={80}
+              mr={16}
+              display="flex"
+              alignItems="center"
+              justifyContent="center"
+              flexDirection="column"
+              fontWeight="bold"
+            >
+              <Image src={"/img/general/usb.png"} width={296} height={304} />
+              <Box mt={0} fontSize={16}>
+                USB
+              </Box>
+              <Box fontSize={14}>free</Box>
+            </Box>
+            <Box fontSize={60} color="grey5" mr={30}>
+              +
+            </Box>
+            <Box fontSize={16} fontWeight="normal" lineHeight={1.8}>
+              {insertBreak(data.data_type.content)}
+            </Box>
+          </Box>
+
           <SelectList
             multipleSelect
-            list={data.data_type.type}
-            price={data.data_type.price}
+            list={Object.keys(data.data_type.fee)}
+            price={insertCommaList(Object.values(data.data_type.fee))}
             name="data_type"
           />
           {/* --- Input title---- */}
@@ -171,7 +263,7 @@ export default function Step2({ data }) {
               strage_key="prefecture"
               value={prefecture}
               setValue={setPrefecture}
-              list={data.place.prefecture}
+              list={Object.keys(data.place.fee)}
               placeholder="都道府県"
             />
             <Box width="100%" height={1} background="#e1e1e1" my={10} />
