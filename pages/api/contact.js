@@ -48,11 +48,10 @@ export default function sendmail(req, res) {
   // 　ゲストに送る自動受付メール
   transporter.sendMail(toGuestMailData, function (err, info) {
     if (err) {
-      console.log(err);
-      res.status(500).send("error");
+      res.status(500).send(err);
     } else {
       console.log(info);
-      res.status(200).send("success");
+      res.status(200).send(info);
     }
   });
 
