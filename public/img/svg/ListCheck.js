@@ -33,7 +33,7 @@ export const ListCheck = ({ ...props }) => {
         <g
           id="Artboard"
           transform="translate(-77.000000, -85.000000)"
-          stroke="#000000"
+          stroke={props.stroke ? props.stroke : "#000000"}
           stroke-width="2"
         >
           <motion.polyline

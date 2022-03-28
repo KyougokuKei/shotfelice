@@ -8,6 +8,7 @@ import Head from "next/head";
 import { Button, BackButton } from "../../components/Button";
 
 import { usePersist } from "../../lib/usepersist";
+import { keys } from "../../lib/localStorageKeys";
 
 export const getStaticProps = async () => {
   const postDatas = await loadYamls([
@@ -22,11 +23,11 @@ export const getStaticProps = async () => {
 };
 
 export default function Step3({ data }) {
-  const [_phone, _setPhone] = usePersist("phone", "");
+  const [_phone, _setPhone] = usePersist(keys.phone, "");
   const [phone, setPhone] = useState(_phone);
-  const [_email, _setEmail] = usePersist("email", "");
+  const [_email, _setEmail] = usePersist(keys.email, "");
   const [email, setEmail] = useState(_email);
-  const [_request, _setRequest] = usePersist("request", "");
+  const [_request, _setRequest] = usePersist(keys.request, "");
   const [request, setRequest] = useState(_request);
 
   return (
@@ -49,7 +50,7 @@ export default function Step3({ data }) {
             color="black"
           >
             <Box fontSize={34}>3.</Box>
-            <Box fontSize={24}>{data.nav[2].slice(2, data.nav[2].length)}</Box>
+            <Box fontSize={24}>{data.nav[2]}</Box>
           </Box>
           <Box
             display="flex"

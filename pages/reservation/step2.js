@@ -16,6 +16,7 @@ import { BackButton, Button } from "../../components/Button";
 
 import { usePersist } from "../../lib/usepersist";
 import { insertBreak, insertCommaList } from "../../lib/convert";
+import { keys } from "../../lib/localStorageKeys";
 
 export const getStaticProps = async () => {
   const postData = await loadYamls([
@@ -35,9 +36,9 @@ export default function Step2({ data }) {
   const [day, setDay] = useState("");
   const [time, setTime] = useState("");
   const [prefecture, setPrefecture] = useState("");
-  const [_address, _setAddress] = usePersist("address", "");
+  const [_address, _setAddress] = usePersist(keys.address, "");
   const [address, setAddress] = useState(_address);
-  const [category, setCategory] = usePersist("category", "person");
+  const [category, setCategory] = usePersist(keys.category, "wedding");
   return (
     <PageTransition>
       <Head>
@@ -59,7 +60,7 @@ export default function Step2({ data }) {
             color="black"
           >
             <Box fontSize={34}>2.</Box>
-            <Box fontSize={24}>{data.nav[1].slice(2, data.nav[1].length)}</Box>
+            <Box fontSize={24}>{data.nav[1]}</Box>
           </Box>
 
           {/* ---- Select Input ---- */}
@@ -73,12 +74,12 @@ export default function Step2({ data }) {
             justifyContent="flex-start"
           >
             <MotionDiv
-              width={100}
-              height={100}
+              // maxWidth={"100%"}
+              // // height={100}
               border="solid 1px white"
               boxShadow="0 4px 8px rgba(0,0,0, 0.2)"
               animate={{ rotate: -2 }}
-              mr={60}
+              mr={[30, 60]}
             >
               <Image
                 src={"/img/category/" + category + ".jpg"}
@@ -93,10 +94,12 @@ export default function Step2({ data }) {
           </Box>
 
           <SelectList
-            multipleSelect
-            list={data.category.categories.wedding}
-            // price={data.number_of_shots.price}
-            name="category_detail"
+            multipleSelect={category === "wedding"}
+            list={Object.keys(data.category.categories[category])}
+            price={insertCommaList(
+              Object.values(data.category.categories[category])
+            )}
+            localStorageKeys={keys.category_detail}
           />
 
           <PlanTitle data={data.number_of_shots} />
@@ -109,7 +112,8 @@ export default function Step2({ data }) {
           >
             <Box
               width={170}
-              mr={16}
+              minWidth={140}
+              mr={[8, 16]}
               display="flex"
               alignItems="center"
               justifyContent="center"
@@ -117,15 +121,20 @@ export default function Step2({ data }) {
               fontWeight="bold"
             >
               <Image src={"/img/general/photos.png"} width={513} height={412} />
-              <Box mt={-20} fontSize={16}>
+              <Box mt={[-10, -20]} fontSize={16}>
                 60枚
               </Box>
               <Box fontSize={14}>free</Box>
             </Box>
-            <Box fontSize={60} color="grey5" mr={30}>
+            <Box
+              fontSize={60}
+              color="grey5"
+              mr={[15, 30]}
+              display={["none", "block"]}
+            >
               +
             </Box>
-            <Box fontSize={16} fontWeight="normal" lineHeight={1.8}>
+            <Box fontSize={[16, 16]} fontWeight="normal" lineHeight={1.8}>
               {insertBreak(data.number_of_shots.content)}
             </Box>
           </Box>
@@ -133,7 +142,7 @@ export default function Step2({ data }) {
           <SelectList
             list={Object.keys(data.number_of_shots.fee)}
             price={insertCommaList(Object.values(data.number_of_shots.fee))}
-            name="number_of_shots"
+            localStorageKeys={keys.number_of_shots}
           />
 
           <PlanTitle data={data.data_type} multipleSelect />
@@ -146,6 +155,7 @@ export default function Step2({ data }) {
           >
             <Box
               width={80}
+              minWidth={80}
               mr={16}
               display="flex"
               alignItems="center"
@@ -159,11 +169,29 @@ export default function Step2({ data }) {
               </Box>
               <Box fontSize={14}>free</Box>
             </Box>
-            <Box fontSize={60} color="grey5" mr={30}>
+            <Box
+              fontSize={60}
+              color="grey5"
+              mr={30}
+              display={["none", "block"]}
+            >
               +
             </Box>
-            <Box fontSize={16} fontWeight="normal" lineHeight={1.8}>
+            <Box
+              fontSize={16}
+              fontWeight="normal"
+              lineHeight={1.8}
+              display={["none", "block"]}
+            >
               {insertBreak(data.data_type.content)}
+            </Box>
+            <Box
+              fontSize={16}
+              fontWeight="normal"
+              lineHeight={1.8}
+              display={["block", "none"]}
+            >
+              {data.data_type.content.replace(/<br>/g, "")}
             </Box>
           </Box>
 
@@ -171,7 +199,7 @@ export default function Step2({ data }) {
             multipleSelect
             list={Object.keys(data.data_type.fee)}
             price={insertCommaList(Object.values(data.data_type.fee))}
-            name="data_type"
+            localStorageKeys={keys.data_type}
           />
           {/* --- Input title---- */}
           <Box fontWeight="bold" fontSize={26} mt={50} mb={14}>
@@ -201,7 +229,7 @@ export default function Step2({ data }) {
             border="solid 1px #e1e1e1"
           >
             <Dropdown
-              strage_key="month"
+              strage_key={keys.month}
               value={month}
               setValue={setMonth}
               list={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
@@ -211,7 +239,7 @@ export default function Step2({ data }) {
             />
             <Box width="1px" background="#e1e1e1" mx={10} />
             <Dropdown
-              strage_key="day"
+              strage_key={keys.day}
               value={day}
               setValue={setDay}
               list={[...Array(31).keys()].map((i) => i + 1)}
@@ -230,7 +258,7 @@ export default function Step2({ data }) {
             borderTop="none"
           >
             <Dropdown
-              strage_key="time"
+              strage_key={keys.time}
               value={time}
               setValue={setTime}
               list={data.date.time_list}
@@ -259,7 +287,7 @@ export default function Step2({ data }) {
             border="solid 1px #e1e1e1"
           >
             <Dropdown
-              strage_key="prefecture"
+              strage_key={keys.prefecture}
               value={prefecture}
               setValue={setPrefecture}
               list={Object.keys(data.place.fee)}

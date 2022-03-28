@@ -24,7 +24,6 @@ export function Nav({ nav }) {
         maxWidth={890}
         width="100%"
         className="noscroll"
-        pl={["5%", 0]}
       >
         {nav.map((step, i) => {
           if (i + 1 !== active_step) {
@@ -59,26 +58,31 @@ function NormalCard(props) {
         position="relative"
         display="flex"
         alignItems="center"
+        justifyContent={["center", "flex-start", "flex-start"]}
         background="white"
         border="solid 1px #e1e1e1"
         height={42}
-        pr={[10, 20]}
-        pl={[30, 30]}
+        pr={[16, 10, 20]}
+        pl={[16, 30, 30]}
         mr={20}
+        borderRadius={[100, 0, 0]}
         zIndex={props.i}
-        ml={props.content[0] === "1" ? 0 : -20}
+        ml={props.i === 4 ? 0 : -20}
         // fontWeight="bold"
         fontSize={[13, 14]}
       >
-        {props.content}
-        <Step_arrow
-          style={{
-            position: "absolute",
-            right: "-31px",
-            top: -1,
-            height: "42px",
-          }}
-        />
+        <Box>{5 - props.i}</Box>
+        <Box display={["none", "block", "block"]}>. {props.content}</Box>
+        <Box display={["none", "block", "block"]}>
+          <Step_arrow
+            style={{
+              position: "absolute",
+              right: "-31px",
+              top: -1,
+              height: "42px",
+            }}
+          />
+        </Box>
       </Box>
     </Link>
   );
@@ -95,18 +99,21 @@ function ActiveCard(props) {
         alignItems="center"
         bg="gold"
         height={42}
-        pr={[10, 20]}
-        pl={[30, 30]}
+        pr={[16, 10, 20]}
+        pl={[16, 30, 30]}
         mr={20}
+        borderRadius={[100, 0, 0]}
         zIndex={props.i}
-        ml={props.content[0] === "1" ? 0 : -20}
+        ml={props.i === 4 ? 0 : -20}
         color="white"
         fontWeight="bold"
         fontSize={[13, 14]}
       >
-        {props.content}
+        <Box>{5 - props.i}</Box>
+        <Box display={["none", "block", "block"]}>. {props.content}</Box>
         <Box
           position="absolute"
+          display={["none", "block", "block"]}
           top={0}
           right={-20}
           borderTop="solid 20px transparent"

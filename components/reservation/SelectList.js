@@ -4,7 +4,7 @@ import { Box, MotionDiv } from "../../styles/components";
 import { ListCheck } from "../../public/img/svg";
 
 export function SelectList(props) {
-  const [arr, setArr] = usePersist(props.name, []);
+  const [arr, setArr] = usePersist(props.localStorageKeys, []);
   const [selected, setSelected] = useState(arr);
   const prices = props.price ? props.price : [];
 
@@ -27,7 +27,7 @@ export function SelectList(props) {
             width="100%"
             background="#ffffff"
             animate={{
-              backgroundColor: selected.includes(i) ? "#f5f5f5" : "#ffffff",
+              backgroundColor: selected.includes(item) ? "#f5f5f5" : "#ffffff",
             }}
             transition={{ duration: 0.2 }}
             height={68}
@@ -38,8 +38,8 @@ export function SelectList(props) {
             style={{ cursor: "pointer" }}
             onTap={() => {
               props.multipleSelect
-                ? multipleSelect(i, selected, setSelected)
-                : oneSelect(i, selected, setSelected);
+                ? multipleSelect(item, selected, setSelected)
+                : oneSelect(item, selected, setSelected);
             }}
           >
             <ListCheck
@@ -49,12 +49,12 @@ export function SelectList(props) {
                 left: "24px",
                 transform: "translateY(-50%)",
               }}
-              toggle={selected.includes(i)}
+              toggle={selected.includes(item)}
             />
             <Box mr="auto" ml={12}>
               {item}
             </Box>
-            <Box>{price}</Box>
+            {price !== "¥0" && <Box>{price}</Box>}
           </MotionDiv>
         );
       })}

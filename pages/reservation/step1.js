@@ -3,11 +3,13 @@ import { Box, MotionDiv } from "../../styles/components";
 import { PageTransition } from "../../components/PageTransition";
 import { Nav } from "../../components/reservation/Nav";
 import { loadYamls } from "../../lib/posts";
-import { convertLink } from "../../lib/convert";
+import { convertLink, insertComma } from "../../lib/convert";
 import Image from "next/image";
 import Head from "next/head";
 import { Button } from "../../components/Button";
 import { usePersist } from "../../lib/usepersist";
+import { ListCheck } from "../../public/img/svg";
+import { keys } from "../../lib/localStorageKeys";
 
 export const getStaticProps = async () => {
   const postDatas = await loadYamls([
@@ -22,7 +24,11 @@ export const getStaticProps = async () => {
 };
 
 export default function Step1({ data }) {
-  const [_active, _setActive] = usePersist("category", "none");
+  const [_active, _setActive] = usePersist(keys.category, "none");
+  const [category_detail, setCategory_detail] = usePersist(
+    keys.category_detail,
+    []
+  );
   const [active, setActive] = useState(_active);
 
   return (
@@ -33,7 +39,7 @@ export default function Step1({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Box display="flex" justifyContent="center" pt={[20, 50]}>
-        <Box maxWidth={890} width="100%" overflow="hidden" px={["4%", 0]}>
+        <Box maxWidth={910} width="100%" overflow="hidden" px={["4%", 20]}>
           <Nav nav={data.nav} />
           <Box my={[20, 50]} width="100%" borderBottom="solid 1px #e1e1e1" />
 
@@ -45,9 +51,7 @@ export default function Step1({ data }) {
               color="black"
             >
               <Box fontSize={34}>1.</Box>
-              <Box fontSize={24}>
-                {data.nav[0].slice(2, data.nav[0].length)}
-              </Box>
+              <Box fontSize={24}>{data.nav[0]}</Box>
             </Box>
             <Box fontSize={16} mt={26} mb={26} lineHeight={2}>
               {convertLink(data.content)}
@@ -67,6 +71,7 @@ export default function Step1({ data }) {
                   active={active}
                   setActive={setActive}
                   _setActive={_setActive}
+                  setCategory_detail={setCategory_detail}
                   data={data.categories[key]}
                   index={i}
                 />
@@ -83,11 +88,19 @@ export default function Step1({ data }) {
   );
 }
 
-function Card({ active, setActive, _setActive, data, index }) {
+function Card({
+  active,
+  setActive,
+  _setActive,
+  setCategory_detail,
+  data,
+  index,
+}) {
   return (
     <MotionDiv
       whileHover={{ opacity: 0.8 }}
       onTap={() => {
+        setCategory_detail([]);
         if (active !== data.title_en) {
           setActive(data.title_en);
           _setActive(data.title_en);
@@ -100,29 +113,60 @@ function Card({ active, setActive, _setActive, data, index }) {
       ml={[0, index % 2 === 1 ? 5 : 10]}
       mb={[5, index < 2 ? 30 : 0]}
       style={{ cursor: "pointer" }}
-      height={160}
+      height={190}
       width={["100%", "calc(50% - 15px)"]}
       background="white"
       display="flex"
       alignItems="center"
       justifyContent="center"
-      variants={{
-        active: {
-          boxShadow: "0px 0px 16px rgba(0, 0, 0, 0.3)",
-        },
+      // variants={{
+      //   active: {
+      //     boxShadow: "0px 0px 16px rgba(0, 0, 0, 0.3)",
+      //   },
 
-        inactive: {
-          boxShadow: "0px 0px 0px rgba(0, 0, 0, 0.1)",
-        },
-      }}
-      animate={active === data.title_en ? "active" : "inactive"}
+      //   inactive: {
+      //     boxShadow: "0px 0px 0px rgba(0, 0, 0, 0.1)",
+      //   },
+      // }}
+      // animate={active === data.title_en ? "active" : "inactive"}
     >
-      <Box width={160} height={160}>
-        <Image src={data.url} width={160} height={160} alt={"person"} />
+      <Box width={190} height={190} position="relative">
+        <MotionDiv
+          position="absolute"
+          width="100%"
+          height="100%"
+          top={0}
+          left={0}
+          background="rgba(0,0,0,0)"
+          initial={{ backgroundColor: "rgba(0,0,0,0)" }}
+          variants={{
+            active: {
+              backgroundColor: "rgba(0,0,0,0.2)",
+            },
+            inactive: {
+              backgroundColor: "rgba(0,0,0,0.0)",
+            },
+          }}
+          animate={active === data.title_en ? "active" : "inactive"}
+          transition={{ duration: 0.2, ease: "linear" }}
+          zIndex={2}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <ListCheck
+            stroke="white"
+            toggle={active === data.title_en}
+            width={80}
+            height={80}
+          />
+        </MotionDiv>
+
+        <Image src={data.url} width={190} height={190} alt={"person"} />
       </Box>
       <Box
-        width="calc(100% - 160px)"
-        height={160}
+        width="calc(100% - 190px)"
+        height={190}
         display="flex"
         alignItems="flex-start"
         justifyContent="center"
@@ -133,6 +177,11 @@ function Card({ active, setActive, _setActive, data, index }) {
         <Box fontSize={[18, 20]} fontWeight="bold" mb={10}>
           {data.title}
         </Box>
+        {data.price && (
+          <Box fontSize={16} mb={8}>
+            ¥{insertComma(data.price)}
+          </Box>
+        )}
         <Box fontSize={14} lineHeight={1.6}>
           {data.content}
         </Box>
