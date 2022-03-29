@@ -75,8 +75,8 @@ export default function Step4({ data }) {
     fee = calcFee(data, inputData, formatData);
   }
 
-  console.log(formatData);
-  console.log(fee);
+  // console.log(formatData);
+  // console.log(fee);
 
   return (
     <PageTransition>
@@ -174,19 +174,21 @@ export default function Step4({ data }) {
           {/* ---- [Right]  Input Confirmation ---- */}
           <Box width={["100%", "40%"]}>
             <GoldTitle>{data.payment_fee.title}</GoldTitle>
-            {data.payment_fee.fee_titles.map((title, index) => {
-              return (
-                <FeeBox
-                  key={index}
-                  title={title}
-                  inputData={fee[title] ? fee[title][0] : ""}
-                  price={fee[title] ? fee[title][1] : ""}
-                />
-              );
-            })}
+            <Box>
+              {data.payment_fee.fee_titles.map((title, index) => {
+                return (
+                  <FeeBox
+                    key={index}
+                    title={title}
+                    inputData={fee[title] ? fee[title][0] : ""}
+                    price={fee[title] ? fee[title][1] : ""}
+                  />
+                );
+              })}
+            </Box>
 
             {/* Warning */}
-            <Box my={32}>
+            <Box display="block" my={32}>
               <Box fontSize={20} fontWeight="bold" mb={16}>
                 {data.warning.title}
               </Box>
@@ -244,32 +246,36 @@ export default function Step4({ data }) {
 }
 
 function FeeBox(props) {
-  return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent="flex-end"
-      borderBottom="solid 1px #B8B8B8"
-      pb={16}
-      fontWeight="bold"
-      fontSize={16}
-      color="grey5"
-      mb={20}
-    >
+  if (props.price !== 0) {
+    return (
       <Box
         display="flex"
-        flexDirection={["column", "column", "row"]}
-        alignItems={["flex-start", "flex-start", "center"]}
-        justifyContent="center"
-        mr="auto"
+        alignItems="center"
+        justifyContent="flex-end"
+        borderBottom="solid 1px #B8B8B8"
+        pb={16}
+        fontWeight="bold"
+        fontSize={16}
+        color="grey5"
+        mb={20}
       >
-        <Box mb={[8, 8, 0]}>{props.title}</Box>
-        <Box mx={10} display={["none", "none", "block"]}>
-          /
+        <Box
+          display="flex"
+          flexDirection={["column", "column", "row"]}
+          alignItems={["flex-start", "flex-start", "center"]}
+          justifyContent="center"
+          mr="auto"
+        >
+          <Box mb={[8, 8, 0]}>{props.title}</Box>
+          <Box mx={10} display={["none", "none", "block"]}>
+            /
+          </Box>
+          <Box>{props.inputData}</Box>
         </Box>
-        <Box>{props.inputData}</Box>
+        <Box>¥{insertComma(props.price)}</Box>
       </Box>
-      <Box>¥{insertComma(props.price)}</Box>
-    </Box>
-  );
+    );
+  } else {
+    return null;
+  }
 }
