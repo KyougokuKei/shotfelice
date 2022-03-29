@@ -111,26 +111,16 @@ function Card({
       }}
       mr={[0, index % 2 === 0 ? 5 : 10]}
       ml={[0, index % 2 === 1 ? 5 : 10]}
-      mb={[5, index < 2 ? 30 : 0]}
+      mb={[10, index < 2 ? 30 : 0]}
       style={{ cursor: "pointer" }}
-      height={190}
+      height={"auto"}
       width={["100%", "calc(50% - 15px)"]}
       background="white"
       display="flex"
-      alignItems="center"
+      alignItems={["flex-start", "center"]}
       justifyContent="center"
-      // variants={{
-      //   active: {
-      //     boxShadow: "0px 0px 16px rgba(0, 0, 0, 0.3)",
-      //   },
-
-      //   inactive: {
-      //     boxShadow: "0px 0px 0px rgba(0, 0, 0, 0.1)",
-      //   },
-      // }}
-      // animate={active === data.title_en ? "active" : "inactive"}
     >
-      <Box width={190} height={190} position="relative">
+      <Box width={[140, 190]} height={[140, 190]} position="relative">
         <MotionDiv
           position="absolute"
           width="100%"
@@ -162,17 +152,18 @@ function Card({
           />
         </MotionDiv>
 
-        <Image src={data.url} width={190} height={190} alt={"person"} />
+        <Image src={data.url} width={190} height={190} alt={data.url} />
       </Box>
       <Box
-        width="calc(100% - 190px)"
-        height={190}
+        width={["calc(100% - 140px)", "calc(100% - 190px)"]}
+        height={["auto", 190]}
         display="flex"
         alignItems="flex-start"
-        justifyContent="center"
+        justifyContent={["flex-start", "center"]}
         flexDirection="column"
-        border="solid 1px #e1e1e1"
+        border={["none", "solid 1px #e1e1e1"]}
         px={20}
+        pr={[0, 20]}
       >
         <Box fontSize={[18, 20]} fontWeight="bold" mb={10}>
           {data.title}
