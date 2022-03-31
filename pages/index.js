@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
-import React from "react";
-
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { Box } from "../styles/components";
 import { loadYaml, getImgPaths } from "../lib/posts";
 
@@ -27,6 +27,20 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ data, imgPaths }) {
+  const router = useRouter();
+  const hash = decodeURI(router.asPath.split("#")[1]);
+
+  useEffect(() => {
+    if (hash) {
+      let elem = document.getElementById(hash);
+      if (elem) {
+        elem.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+    }
+  }, [router]);
+
   return (
     <PageTransition width="100%" mt={-90}>
       <Head>

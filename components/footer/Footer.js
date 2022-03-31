@@ -1,17 +1,10 @@
 import { Box, MotionDiv, Clickable } from "../../styles/components";
 import Link from "next/link";
-import { Link as Scroll } from "react-scroll";
 import { Phone, InstagramTxt } from "../../public/img/svg";
 import { SNS } from "./SNS";
-const data = require("./data");
+import Router from "next/router";
 
-const RScroll = (props) => (
-  <MotionDiv whileHover={{ opacity: 0.8 }} style={{ cursor: "pointer" }}>
-    <Scroll to={props.to} duration={400} smooth={true} {...props}>
-      {props.children}
-    </Scroll>
-  </MotionDiv>
-);
+const data = require("./data");
 
 export function Footer() {
   return (
@@ -50,12 +43,12 @@ export function Footer() {
             fontSize={20}
             mb={20}
           >
-            <RScroll to="ホーム">{data.body.home.title}</RScroll>
+            <Link href="/#ホーム">{data.body.home.title}</Link>
           </MotionDiv>
 
           {data.body.home.items.map((item, index) => (
             <Box key={index} mb={20}>
-              <RScroll to={item}>{item}</RScroll>
+              <Link href={"/#" + item}>{item}</Link>
             </Box>
           ))}
         </Box>
