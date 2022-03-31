@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 import {
   space,
   color,
@@ -24,6 +24,6 @@ export const Clickable = styled.a`
   text-decoration: none;
   &:hover {
     cursor: pointer;
-    opacity: 0.8;
+    // opacity: 0.8;
   }
 `;

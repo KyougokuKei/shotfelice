@@ -7,7 +7,6 @@ export default function sendmail(req, res) {
   const guestMail = data[keys[7]];
   // const myMail = "kyougoku182@gmail.com";
   const myMail = "karutetto332@gmail.com";
-  console.log(process.env.MAIL_PASSWARD2);
   const transporter = nodemailer.createTransport({
     port: 465,
     service: "gmail",
@@ -42,21 +41,18 @@ export default function sendmail(req, res) {
 
   // 自分に送る自動受付メール
   transporter.sendMail(toHostMailData, function (err, info) {
-    if (err) console.log(err);
-    else console.log(info);
-  });
-
-  // 　ゲストに送る自動受付メール
-  transporter.sendMail(toGuestMailData, function (err, info) {
     if (err) {
-      res.status(500).send(err);
+      res.status(500).send("メールの送信に失敗しました。");
     } else {
-      console.log(info);
-      res.status(200).send(info);
+      transporter.sendMail(toGuestMailData, function (err, info) {
+        if (err) {
+          res.status(500).send("メールの送信に失敗しました。");
+        } else {
+          res.status(200).send("送信完了");
+        }
+      });
     }
   });
-
-  // res.status(200).send("success");
 }
 
 const getHostMailData = (data, keys) => {

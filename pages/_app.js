@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import "../styles/lib/reset.css";
+import "../styles/lib/loading_animation.css";
 
 import { AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "styled-components";

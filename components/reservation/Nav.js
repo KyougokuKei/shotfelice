@@ -1,37 +1,31 @@
-import { Box } from "../../styles/components";
+import { Box, MotionDiv } from "../../styles/components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Step_arrow } from "../../public/img/svg/Step_arrow";
 import { theme } from "../../lib/theme";
 
-export function Nav({ nav }) {
+import { formsAreInputed } from "../../lib/formchecker";
+
+export function Nav(props) {
   const active_step = Number(useRouter().asPath.slice(-1));
+  let inputedNumver = formsAreInputed();
   return (
     <Box position="relative">
       <Box
-        position="absolute"
-        top={0}
-        right={0}
-        background="linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);"
-        height="100%"
-        width="20%"
-        zIndex={6}
-        display={["block", "block", "block"]}
-      />
-      <Box
         display="flex"
-        overflow="scroll"
         maxWidth={890}
         width="100%"
         className="noscroll"
+        py={10}
       >
-        {nav.map((step, i) => {
+        {props.nav.map((step, i) => {
           if (i + 1 !== active_step) {
             return (
               <NormalCard
                 content={step}
                 href={"/reservation/step" + String(i + 1)}
                 i={4 - i}
+                inputedNumver={inputedNumver}
               />
             );
           } else {
@@ -40,6 +34,7 @@ export function Nav({ nav }) {
                 content={step}
                 href={"/reservation/step" + String(i + 1)}
                 i={4 - i}
+                inputedNumver={inputedNumver}
               />
             );
           }
@@ -50,13 +45,20 @@ export function Nav({ nav }) {
 }
 
 function NormalCard(props) {
+  const index = 5 - props.i;
+  const disable = index > props.inputedNumver;
+  // console.log(index, disable);
   return (
     <Link href={props.href}>
-      <Box
-        className="pointer"
-        style={{ whiteSpace: "nowrap" }}
+      <MotionDiv
+        style={{
+          whiteSpace: "nowrap",
+          cursor: "pointer",
+          pointerEvents: disable ? "none" : "auto",
+        }}
         position="relative"
         display="flex"
+        whileHover={{ rotate: [0, -3, 3, -3, 0], scale: 1.05 }}
         alignItems="center"
         justifyContent={["center", "flex-start", "flex-start"]}
         background="white"
@@ -68,10 +70,9 @@ function NormalCard(props) {
         borderRadius={[100, 0, 0]}
         zIndex={props.i}
         ml={props.i === 4 ? 0 : -20}
-        // fontWeight="bold"
         fontSize={[13, 14]}
       >
-        <Box>{5 - props.i}</Box>
+        <Box>{index}</Box>
         <Box display={["none", "block", "block"]}>. {props.content}</Box>
         <Box display={["none", "block", "block"]}>
           <Step_arrow
@@ -83,17 +84,24 @@ function NormalCard(props) {
             }}
           />
         </Box>
-      </Box>
+      </MotionDiv>
     </Link>
   );
 }
 
 function ActiveCard(props) {
+  const index = 5 - props.i;
+  const disable = index > props.inputedNumver;
+  // console.log(index, disable);
   return (
     <Link href={props.href}>
-      <Box
-        className="pointer"
-        style={{ whiteSpace: "nowrap" }}
+      <MotionDiv
+        style={{
+          whiteSpace: "nowrap",
+          cursor: "pointer",
+          pointerEvents: disable ? "none" : "auto",
+        }}
+        whileHover={{ rotate: [0, -3, 3, -3, 0], scale: 1.05 }}
         position="relative"
         display="flex"
         alignItems="center"
@@ -109,18 +117,18 @@ function ActiveCard(props) {
         fontWeight="bold"
         fontSize={[13, 14]}
       >
-        <Box>{5 - props.i}</Box>
+        <Box>{index}</Box>
         <Box display={["none", "block", "block"]}>. {props.content}</Box>
         <Box
           position="absolute"
           display={["none", "block", "block"]}
           top={0}
           right={-20}
-          borderTop="solid 20px transparent"
-          borderBottom="solid 20px transparent"
-          borderLeft={"solid 20px " + theme.colors.gold}
+          borderTop="solid 21px transparent"
+          borderBottom="solid 21px transparent"
+          borderLeft={"solid 21px " + theme.colors.gold}
         />
-      </Box>
+      </MotionDiv>
     </Link>
   );
 }

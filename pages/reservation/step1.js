@@ -24,7 +24,7 @@ export const getStaticProps = async () => {
 };
 
 export default function Step1({ data }) {
-  const [_active, _setActive] = usePersist(keys.category, "none");
+  const [_active, _setActive] = usePersist(keys.category, "");
   const [category_detail, setCategory_detail] = usePersist(
     keys.category_detail,
     []
@@ -79,7 +79,12 @@ export default function Step1({ data }) {
             })}
           </Box>
 
-          <Button href="/reservation/step2" mt={42} mb={200}>
+          <Button
+            href="/reservation/step2"
+            mt={42}
+            mb={200}
+            disable={active === ""}
+          >
             {data.next_btn_text}
           </Button>
         </Box>
@@ -105,8 +110,8 @@ function Card({
           setActive(data.title_en);
           _setActive(data.title_en);
         } else {
-          setActive("none");
-          _setActive("none");
+          setActive("");
+          _setActive("");
         }
       }}
       mr={[0, index % 2 === 0 ? 5 : 10]}

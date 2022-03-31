@@ -151,7 +151,11 @@ export default function Step3({ data }) {
             }}
           />
           {/* ---- Next Button ---- */}
-          <Button href="/reservation/step4" mt={42}>
+          <Button
+            href="/reservation/step4"
+            mt={42}
+            disable={!(phone !== "" && email !== "")}
+          >
             {data.next_btn_text}
           </Button>
           <Box

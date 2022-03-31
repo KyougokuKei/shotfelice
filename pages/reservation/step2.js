@@ -32,6 +32,15 @@ export const getStaticProps = async () => {
 };
 
 export default function Step2({ data }) {
+  const [category_detail, setCategory_detail] = usePersist(
+    keys.category_detail,
+    []
+  );
+  const [number_of_shots, setNumber_of_shots] = usePersist(
+    keys.number_of_shots,
+    []
+  );
+  const [data_type, setData_type] = usePersist(keys.data_type, []);
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
   const [time, setTime] = useState("");
@@ -39,6 +48,17 @@ export default function Step2({ data }) {
   const [_address, _setAddress] = usePersist(keys.address, "");
   const [address, setAddress] = useState(_address);
   const [category, setCategory] = usePersist(keys.category, "wedding");
+  console.log(
+    category_detail,
+    number_of_shots,
+    data_type,
+    month,
+    day,
+    time,
+    prefecture,
+    address
+  );
+  console.log(category_detail.length === 0);
   return (
     <PageTransition>
       <Head>
@@ -99,7 +119,8 @@ export default function Step2({ data }) {
             price={insertCommaList(
               Object.values(data.category.categories[category])
             )}
-            localStorageKeys={keys.category_detail}
+            value={category_detail}
+            setValue={setCategory_detail}
           />
 
           <PlanTitle data={data.number_of_shots} />
@@ -142,7 +163,8 @@ export default function Step2({ data }) {
           <SelectList
             list={Object.keys(data.number_of_shots.fee)}
             price={insertCommaList(Object.values(data.number_of_shots.fee))}
-            localStorageKeys={keys.number_of_shots}
+            value={number_of_shots}
+            setValue={setNumber_of_shots}
           />
 
           <PlanTitle data={data.data_type} multipleSelect />
@@ -199,7 +221,8 @@ export default function Step2({ data }) {
             multipleSelect
             list={Object.keys(data.data_type.fee)}
             price={insertCommaList(Object.values(data.data_type.fee))}
-            localStorageKeys={keys.data_type}
+            value={data_type}
+            setValue={setData_type}
           />
           {/* --- Input title---- */}
           <Box fontWeight="bold" fontSize={26} mt={50} mb={14}>
@@ -310,7 +333,22 @@ export default function Step2({ data }) {
           </Box>
 
           {/* ---- Next Button ---- */}
-          <Button href="/reservation/step3" mt={42}>
+          <Button
+            href="/reservation/step3"
+            mt={42}
+            disable={
+              !(
+                category_detail.length !== 0 &&
+                number_of_shots.length !== 0 &&
+                data_type.length !== 0 &&
+                month !== "" &&
+                day !== "" &&
+                time !== "" &&
+                prefecture !== "" &&
+                address !== ""
+              )
+            }
+          >
             {data.next_btn_text}
           </Button>
           <Box
