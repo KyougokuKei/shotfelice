@@ -46,7 +46,7 @@ export function Nav(props) {
 
 function NormalCard(props) {
   const index = 5 - props.i;
-  const disable = index > props.inputedNumver;
+  const disable = index === 5 ? true : index > props.inputedNumver;
   // console.log(index, disable);
   return (
     <Link href={props.href}>
@@ -91,8 +91,7 @@ function NormalCard(props) {
 
 function ActiveCard(props) {
   const index = 5 - props.i;
-  const disable = index > props.inputedNumver;
-  // console.log(index, disable);
+  const disable = index === 5 ? true : index > props.inputedNumver;
   return (
     <Link href={props.href}>
       <MotionDiv
