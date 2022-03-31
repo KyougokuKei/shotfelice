@@ -95,7 +95,7 @@ export function Service({ service }) {
                   mt={32}
                 >
                   <Button
-                    href="/reservation"
+                    href="/reservation/step1"
                     width={["100%", "100%", 300]}
                     fontWeight="normal"
                     py={30}

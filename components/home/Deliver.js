@@ -137,7 +137,10 @@ export function Deliver({ deliver }) {
         width={["calc(100% - 60px)", "inherit", "inherit"]}
         display={["none", "block", "block"]}
       >
-        <Button width={["100%", "inherit", "inherit"]} href="/reservation">
+        <Button
+          width={["100%", "inherit", "inherit"]}
+          href="/reservation/step1"
+        >
           撮影を予約する
         </Button>
       </Box>
