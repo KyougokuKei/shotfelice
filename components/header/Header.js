@@ -54,6 +54,7 @@ export function Header() {
           animate={String(isOpen)}
           height={["auto", "auto !important"]}
           opacity={["1", "1 !important"]}
+          overflow="hidden"
         >
           {[...Array(data.href.length).keys()].map((i) => {
             return (

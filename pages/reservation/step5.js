@@ -42,7 +42,7 @@ export default function Step5({ data }) {
           <Nav nav={data.nav} />
           <Box my={[20, 50]} width="100%" borderBottom="solid 1px #e1e1e1" />
           {/* ---- Step title ---- */}
-          <Box fontSize={34} fontWeight="bold" mb={27}>
+          <Box fontSize={[30, 34]} fontWeight="bold" mb={27} mt={[40, 50]}>
             {data.success_msg.title}
           </Box>
           <Box
@@ -50,11 +50,11 @@ export default function Step5({ data }) {
             width="100%"
             color="white"
             fontSize={18}
-            py={19}
-            px={30}
+            py={[10, 20]}
+            px={[15, 30]}
             display="flex"
             alignItems="center"
-            mb={80}
+            mb={[30, 40]}
           >
             <Box mr={10}>
               <Success />
@@ -62,8 +62,21 @@ export default function Step5({ data }) {
             {data.success_msg.body}
           </Box>
 
-          <Box fontSize={20} lineHeight={2} mb={200}>
+          <Box
+            fontSize={[16, 20]}
+            lineHeight={2}
+            mb={200}
+            display={["none", "block"]}
+          >
             {insertBreak(data.success_msg.foot)}
+          </Box>
+          <Box
+            fontSize={[16, 20]}
+            lineHeight={2}
+            mb={200}
+            display={["block", "none"]}
+          >
+            {data.success_msg.foot.split("<br>")}
           </Box>
         </Box>
       </Box>

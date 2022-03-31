@@ -92,9 +92,9 @@ export function Service({ service }) {
                   display="flex"
                   alignItems="center"
                   justifyContent="flex-end"
+                  mt={32}
                 >
                   <Button
-                    mt={[32]}
                     href="/reservation"
                     width={["100%", "100%", 300]}
                     fontWeight="normal"

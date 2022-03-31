@@ -72,20 +72,22 @@ export function GeneralHeader() {
             zIndex={2}
           />
 
-          <Box
-            position="absolute"
-            left={["100px", "50%", "50%"]}
-            style={{ transform: "translateX(-50%)" }}
-            display={["flex", "none", "flex"]}
-            alignItems="center"
-            justifyContent="center"
-            zIndex={1}
-          >
-            <Logo width={24} />
-            <Box ml={4} fontSize={24} fontWeight="bold">
-              Shotfelice
-            </Box>
-          </Box>
+          <Link href="/" passHref>
+            <Clickable
+              position="absolute"
+              left={["100px", "50%", "50%"]}
+              style={{ transform: "translateX(-50%)" }}
+              display={["flex", "none", "flex"]}
+              alignItems="center"
+              justifyContent="center"
+              zIndex={1}
+            >
+              <Logo width={24} />
+              <Box ml={4} fontSize={24} fontWeight="bold">
+                Shotfelice
+              </Box>
+            </Clickable>
+          </Link>
 
           <MotionDiv
             position="absolute"
@@ -104,6 +106,7 @@ export function GeneralHeader() {
             height={["auto", "auto !important"]}
             opacity={["1", "1 !important"]}
             background="white"
+            overflow="hidden"
             // background="#aaa"
           >
             {[...Array(data.href.length).keys()].map((i) => {
