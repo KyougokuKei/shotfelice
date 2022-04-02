@@ -36,12 +36,12 @@ export function GeneralHeader() {
   return (
     <MotionDiv
       initial={{ x: -100, opacity: 0, height: 0 }}
-      animate={{ x: 0, opacity: 1, height: 90 }}
+      animate={{ x: 0, opacity: 1, height: 80 }}
       transition={{ ease: "easeOut", transition: { duration: 0.2 } }}
       position="fixed"
       top={0}
       width="100%"
-      height={[80, 90]}
+      height={[80, 80]}
       zIndex={7}
       background="white"
     >
@@ -57,7 +57,7 @@ export function GeneralHeader() {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          height={[80, 90]}
+          height={[80, 80]}
           px={["5%", 80]}
         >
           <HamburgerMenu
