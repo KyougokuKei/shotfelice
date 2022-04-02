@@ -11,7 +11,7 @@ export function Button(props) {
         animate={{ backgroundColor: props.disable ? "#aaa" : "#4d4646" }}
       >
         <Clickable
-          height={50}
+          height={props.height ? props.height : 50}
           styles={{ boxSizeing: "border-box" }}
           display="flex"
           alignItems="center"
@@ -26,7 +26,7 @@ export function Button(props) {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            height={55}
+            height={props.height ? props.height : 50}
           >
             {props.children}
           </Text>
@@ -40,7 +40,7 @@ export function BackButton(props) {
   return (
     <Link href={props.href} passHref>
       <Clickable
-        height={40}
+        height={props.height ? props.height : 50}
         styles={{ boxSizeing: "border-box", cursor: "pointer" }}
         className="border-box pointer"
         display="flex"
@@ -58,7 +58,7 @@ export function BackButton(props) {
           display="flex"
           alignItems="center"
           justifyContent="center"
-          height={40}
+          height={props.height ? props.height : 50}
         >
           {props.children}
         </Text>

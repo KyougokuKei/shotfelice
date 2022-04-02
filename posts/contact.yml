@@ -1,0 +1,19 @@
+business_hours:
+  title: 営業時間
+  weekday: 平日10:00〜21:00
+  holidays: 土日祝9:00〜21:00
+phone:
+  title: 電話番号
+  phone_number: 080-7065-9845
+  caution:
+    - 営業時間外の場合は
+    - メールをお送りください。
+mail:
+  title: メール
+  send_btn_msg: メールを送る
+  caution: メールの返信は1日以上かかる場合がございます。
+  modal_send_btn_msg: 送信
+  modal_cancel_btn_msg: キャンセル
+success:
+  title: 送信しました
+  message: お問合せを送信いたしました。ご記入いただいたメールアドレスに返答いたしますので、今しばらくお待ちください。

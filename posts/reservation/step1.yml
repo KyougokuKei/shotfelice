@@ -22,6 +22,6 @@ categories:
   else:
     url: /img/category/else.jpg
     title: その他
-    price: ""
+    price: 15000
     title_en: else
     content: 上記のどれにも該当しない方はこちら。電話またはメールでの相談をお願いします。

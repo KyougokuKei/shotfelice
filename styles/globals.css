@@ -55,3 +55,9 @@ a {
     url("/fonts/TsukushiAMaruGothic-Bold.woff") format("woff");
   font-display: swap;
 }
+
+@media screen and (min-width: 768px) {
+  a[href^="tel:"] {
+    pointer-events: none;
+  }
+}
