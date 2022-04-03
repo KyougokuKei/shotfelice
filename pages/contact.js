@@ -30,7 +30,7 @@ export default function Contact({ data }) {
   const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   return (
-    <PageTransition>
+    <PageTransition height="100%">
       <Modal
         isVisible={isVisible}
         setIsVisible={setIsVisible}
@@ -54,7 +54,7 @@ export default function Contact({ data }) {
 
       <Box
         width="100vw"
-        height={["auto", "calc(100vh - 80px)"]}
+        height={["auto", "100%"]}
         position="relative"
         display="flex"
         alignItems="center"

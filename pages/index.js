@@ -52,7 +52,7 @@ export default function Home({ data, imgPaths }) {
       {/* Background Image */}
       <Box
         width="100vw"
-        height="100vh"
+        height="100%"
         position="absolute"
         overflow="hidden"
         zIndex="-1"
