@@ -1,0 +1,29 @@
+name_jp: 池田 公彦
+name_en: Ikegda Kimihiko
+position: Shotfelice CEO
+title: ABOUT ME
+message:
+  - 東京を中心に東北・近畿地方までカメラマンとして活動をしています。
+    撮影は技術も大事ですが、人間性も大事だと考えています。
+  - しっかりコミュニケーションをとり、お客様が安心して、自然な笑顔を引き出せるように心がけています。
+achievement:
+  title: 実績
+  content:
+    - 2020年10月16日公開の映画「鬼滅の刃」のCM撮影。
+    - マッチングサイトにて東京のカメラマン人気ランキング10,900人中、第８位を記録。
+history:
+  title: これまでの活動
+  content:
+    結婚式場の専属カメラマンを経験した後、独立する。その後は、結婚式、映画CM、
+    TVショッピングのインサート、モデルの宣材写真等、幅広いジャンルの撮影を行いながら、現在活動中。
+profile:
+  title: PROFILE LIST
+  items:
+    [
+      [出身地, 東京都町田市, birthplace],
+      [身長, 178cm, height],
+      [年齢, 27歳, age],
+      [好きな食べ物, 麺類, favorite_food],
+      [好きな映画, 海猿, favorite_movie],
+      [趣味, 楽器演奏 自然散策, hobby],
+    ]

@@ -39,6 +39,20 @@ a {
 .noscroll::-webkit-scrollbar {
   display: none;
 }
+.vh100 {
+  min-height: calc(100vh - 80px);
+  min-height: -webkit-fill-available;
+}
+
+.vh100 {
+  min-height: calc(100vh - 80px);
+}
+
+@supports (-webkit-touch-callout: none) {
+  .vh100 {
+    min-height: -webkit-fill-available;
+  }
+}
 
 @font-face {
   font-family: "TsukushiAMaruGhothic";
