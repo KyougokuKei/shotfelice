@@ -6,14 +6,15 @@ export default function sendmail(req, res) {
 
   const guestMail = data[keys[7]];
   // const myMail = "kyougoku182@gmail.com";
-  const myMail = "karutetto332@gmail.com";
+  // const myMail = "karutetto332@gmail.com";
+  const myMail = "kimiham0606@gmail.com";
   const transporter = nodemailer.createTransport({
     port: 465,
     service: "gmail",
     host: "smtp.gmail.com",
     auth: {
       user: myMail,
-      pass: process.env.MAIL_PASSWARD2,
+      pass: process.env.MAIL_PASSWARD,
     },
     secure: true,
   });
@@ -33,7 +34,7 @@ export default function sendmail(req, res) {
   // ゲストに送る自動受付メール
   const toGuestMailData = {
     from: myMail,
-    to: myMail,
+    to: guestMail,
     subject: `【予約の申し込み自動受付メール】`,
     text: "Shotfeliceに予約を申し込みました。",
     html: getGuestMailData(data, keys),

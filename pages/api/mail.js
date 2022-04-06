@@ -5,14 +5,15 @@ export default function sendmail(req, res) {
   const guestMail = data.mailAddress;
   const message = data.message;
   // const myMail = "kyougoku182@gmail.com";
-  const myMail = "karutetto332@gmail.com";
+  // const myMail = "karutetto332@gmail.com";
+  const myMail = "kimiham0606@gmail.com";
   const transporter = nodemailer.createTransport({
     port: 465,
     service: "gmail",
     host: "smtp.gmail.com",
     auth: {
       user: myMail,
-      pass: process.env.MAIL_PASSWARD2,
+      pass: process.env.MAIL_PASSWARD,
     },
     secure: true,
   });

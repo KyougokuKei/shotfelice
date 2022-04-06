@@ -18,7 +18,7 @@ export function Header() {
     },
   };
   return (
-    <Box position="relative" height={[40, 90]}>
+    <Box position="relative" height={[40, 90]} mb="auto">
       <OutsideClickHandler
         onOutsideClick={() => {
           if (isOpen) {

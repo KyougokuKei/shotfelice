@@ -9,10 +9,10 @@ export function Subheading({ subheading, nav }) {
       alignItems="flex-start"
       justifyContent="center"
       flexDirection="column"
-      style={{ boxSizing: "border-box" }}
       px={["5%", "10%", "10%"]}
       width="100%"
-      height={["calc(100vh - 94px)", "calc(100vh - 144px)"]}
+      mb="auto"
+      style={{ boxSizing: "border-box" }}
     >
       <Text mb={30} color="black" fontSize={[24, 28]}>
         {subheading.subtitle}

@@ -54,6 +54,16 @@ a {
   }
 }
 
+.vh100m94 {
+  min-height: 100vh;
+}
+
+@supports (-webkit-touch-callout: none) {
+  .vh100m94 {
+    min-height: -webkit-fill-available;
+  }
+}
+
 @font-face {
   font-family: "TsukushiAMaruGhothic";
   font-weight: normal;

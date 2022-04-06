@@ -54,7 +54,7 @@ export default function Home({ data, imgPaths }) {
         zIndex="-1"
       >
         <Image
-          src="/img/general/background_image-min.jpg"
+          src="/img/general/background_image.jpg"
           alt="background_image"
           layout="fill"
           objectFit="cover"
@@ -62,9 +62,11 @@ export default function Home({ data, imgPaths }) {
         ></Image>
       </Box>
 
-      <TopBar top_bar={data.top_bar} />
-      <Header nav={data.nav} />
-      <Subheading subheading={data.subheading} nav={data.nav} />
+      <Box className="vh100m94" display="flex" flexDirection="column">
+        <TopBar top_bar={data.top_bar} />
+        <Header nav={data.nav} />
+        <Subheading subheading={data.subheading} nav={data.nav} />
+      </Box>
       <Garally garally={data.garally} imgPaths={imgPaths} />
       <Deliver deliver={data.deliver} />
       <Service service={data.service} />

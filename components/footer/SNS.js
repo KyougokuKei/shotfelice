@@ -12,7 +12,7 @@ import {
   LineIcon,
 } from "react-share";
 
-const siteURL = "https://shotfelice.vercel.app/";
+const siteURL = "https://shotfelice.net/";
 export function SNS() {
   return (
     <Box mt={[40, 100]}>

@@ -151,7 +151,7 @@ export function GeneralHeader() {
               <Phone width={18} height={18} />
               {/* <Image width={18} height={18} src="/img/svg/phone.svg" alt="phone"></Image> */}
               <Text color="black" fontSize={16} ml={4}>
-                000-000-0000
+                {data.phone_number}
               </Text>
             </Box>
           </Box>
