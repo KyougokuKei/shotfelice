@@ -7,6 +7,7 @@ import {
 } from "../styles/components";
 import { PageTransition } from "../components/PageTransition";
 import Image from "next/image";
+import Seo from "../lib/Seo";
 import { Cclock, Cmail, Cphone } from "../public/img/contact/";
 import { loadYaml } from "../lib/posts";
 import { Modal } from "../components/Modal";
@@ -31,6 +32,7 @@ export default function Contact({ data }) {
   const [isSuccess, setIsSuccess] = useState(false);
   return (
     <PageTransition height="100%">
+      <Seo pageTitle="お問い合せ - Shotfelice" />
       <Modal
         isVisible={isVisible}
         setIsVisible={setIsVisible}
@@ -51,7 +53,6 @@ export default function Contact({ data }) {
         )}
         {isSuccess && <Success msg={data.success} />}
       </Modal>
-
       <Box
         width="100vw"
         height={["auto", "100%"]}

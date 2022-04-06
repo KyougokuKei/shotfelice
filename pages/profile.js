@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Seo from "../lib/Seo";
 import { Box } from "../styles/components";
 import { PageTransition } from "../components/PageTransition";
 import { Comma } from "../public/img/profile/Comma";
@@ -23,7 +23,6 @@ export const getStaticProps = async () => {
 };
 
 export default function Profile({ data }) {
-  console.log(data);
   const icons = {
     birthplace: <Birthplace />,
     age: <Age />,
@@ -34,6 +33,7 @@ export default function Profile({ data }) {
   };
   return (
     <PageTransition>
+      <Seo pageTitle="プロフィール - Shotfelice" />
       {/* Background Image */}
 
       <Box

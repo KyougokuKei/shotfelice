@@ -77,7 +77,7 @@ export function Footer() {
             fontSize={20}
             mb={24}
           >
-            <Link href="/reservation">{data.body.reservation.title}</Link>
+            <Link href="/reservation/step1">{data.body.reservation.title}</Link>
           </MotionDiv>
           <MotionDiv
             whileHover={{ opacity: 0.8 }}
