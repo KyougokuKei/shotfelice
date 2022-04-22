@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Seo from "../lib/Seo";
+import { insertLink } from "../lib/convert";
 import { Box } from "../styles/components";
 import { PageTransition } from "../components/PageTransition";
 import { Comma } from "../public/img/profile/Comma";
@@ -92,7 +93,7 @@ export default function Profile({ data }) {
           height={["auto", 720]}
           background="#F8F9FA"
           ml={[0, 25]}
-          py={[40, 40, 80]}
+          py={[40, 40, 60]}
           px={[30, 30, 64]}
         >
           {/* ABOUT ME */}
@@ -137,18 +138,20 @@ export default function Profile({ data }) {
           >
             {/* 実績 */}
             <Box width={["100%", "100%", "50%"]} mr={16}>
-              <Box color="gold" fontSize={20} mb={[12, 8, 20]}>
+              <Box color="gold" fontSize={20} mb={[12, 8, 12]}>
                 {data.achievement.title}
               </Box>
-              {data.achievement.content.map((item, index) => (
-                <Box key={index} fontSize={14} color="grey6" mb={6}>
-                  ・{item}
-                </Box>
-              ))}
+              {data.achievement.content.map((item, index) => {
+                return (
+                  <Box key={index} fontSize={14} color="grey6" mb={6}>
+                    ・{insertLink(item)}
+                  </Box>
+                );
+              })}
             </Box>
             {/* これまでの活動 */}
             <Box width={["100%", "100%", "50%"]}>
-              <Box color="gold" fontSize={20} mb={[12, 8, 20]}>
+              <Box color="gold" fontSize={20} mb={[12, 8, 12]}>
                 {data.history.title}
               </Box>
               <Box fontSize={14} color="grey6">
