@@ -43,7 +43,7 @@ export default function Home({ data, imgPaths }) {
 
   return (
     <PageTransition width="100%" mt={-80}>
-      <Seo pageTitle="Shotfelice" />
+      <Seo pageTitle="Shotfelice - ショットフェリーチェ（池田公彦）" />
 
       {/* Background Image */}
       <Box

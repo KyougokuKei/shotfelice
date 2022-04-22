@@ -34,7 +34,7 @@ export default function Profile({ data }) {
   };
   return (
     <PageTransition>
-      <Seo pageTitle="プロフィール - Shotfelice" />
+      <Seo pageTitle="池田公彦のプロフィール - Shotfelice" />
       {/* Background Image */}
 
       <Box

@@ -32,7 +32,7 @@ export default function Contact({ data }) {
   const [isSuccess, setIsSuccess] = useState(false);
   return (
     <PageTransition height="100%">
-      <Seo pageTitle="お問い合せ - Shotfelice" />
+      <Seo pageTitle="お問い合せ - Shotfelice_池田公彦" />
       <Modal
         isVisible={isVisible}
         setIsVisible={setIsVisible}
